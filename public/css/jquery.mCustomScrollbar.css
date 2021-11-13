@@ -1015,7 +1015,7 @@ yx-axis
 	}
 	
 	.mCS-minimal.mCSB_scrollTools .mCSB_draggerRail, 
-	.mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail{ background-color: transparent; }
+	.mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail{ background-color: rgb(54, 197, 223); }
 	
 	.mCS-minimal.mCSB_scrollTools_vertical .mCSB_dragger, 
 	.mCS-minimal-dark.mCSB_scrollTools_vertical .mCSB_dragger{ height: 50px; }

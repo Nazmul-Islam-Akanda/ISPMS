@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <!-- Title -->
-  <title>Crypto - Dashboard | Nova - Responsive WebApp UI Kit</title>
+  <title>Admin-Dashboards</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">

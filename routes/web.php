@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CustomersController;
+use App\Http\Controllers\Admin\UserDepartmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,12 @@ use App\Http\Controllers\Admin\CustomersController;
 */
 
 Route::get('/', function () {
-    return view('master');
+    return redirect()->route('dashboard');
 });
 
-Route::get('/admin/customers',[CustomersController::CLass,'customersList']);
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('/dashboards',[HomeController::class,'dashboard'])->name('dashboard');
+    Route::get('/customers',[CustomersController::CLass,'customersList']);
+    route::get('/user-departments',[UserDepartmentsController::class,'userDepartmentsList'])->name('admin.user-departments.list');
+    route::get('/add/user-departments',[UserDepartmentsController::class,'add'])->name('user-departments.add');
+});
