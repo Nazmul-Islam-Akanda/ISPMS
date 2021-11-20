@@ -43,11 +43,7 @@
 
 
 
-{{--
 
-    Dashboard contents were here
-  
-  --}}
 @yield('content')
 
 

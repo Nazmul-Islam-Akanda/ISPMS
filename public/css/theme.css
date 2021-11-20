@@ -15810,7 +15810,7 @@ body.has-sidebar {
 .main {
   position: relative;
   display: -ms-flexbox;
-  display: flex;
+  /* display: flex; */
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   min-height: calc(100% - 4.0625rem);

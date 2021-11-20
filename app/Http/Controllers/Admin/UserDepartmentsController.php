@@ -2,18 +2,33 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Departments;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserDepartmentsController extends Controller
 {
     public function userDepartmentsList()
     {
-        return view('admin.pages.user-departments-list');
+        $departments=Departments::all();
+        //dd($Departments);
+        return view('admin.pages.user-departments-list',compact('departments'));
     }
 
     public function add()
     {
         return view('admin.pages.add-user-departments');
     }
+
+    public function store(Request $request){
+       // dd($request->all());
+        Departments::create([
+            //field name for DB || field name for form
+            'name'=>$request->name
+        ]);
+
+        return redirect()->back();
+    }
+
+
 }

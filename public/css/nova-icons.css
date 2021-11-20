@@ -2,9 +2,8 @@
   font-family: 'nova-icons';
   src: url('nova-icons.eot');
   src: url('nova-icons.eot#iefix') format('embedded-opentype'),
-  url('nova-icons.svg') format('svg'),
-  url('nova-icons.ttf') format('truetype'),
-  url('nova-icons.woff') format('woff');
+  url('nova-icons.svg') format('svg');
+  
   font-weight: normal;
   font-style: normal;
 }

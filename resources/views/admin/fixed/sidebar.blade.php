@@ -20,9 +20,6 @@
       <!-- End Dashboards -->
 
 
-
-
-
       <!-- Sidebar Sub Title -->
       <li class="sidebar-heading h6">Actions</li>
       <!-- End Sidebar Sub Title -->
@@ -158,7 +155,7 @@
 
       <!-- Add User -->
       <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.users.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
             {!! file_get_contents('svg/person.svg') !!}
           </span>
