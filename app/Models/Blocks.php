@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UsersModel extends Model
+class Blocks extends Model
 {
     use HasFactory;
     protected $guarded=[];
 
     //relation
-    public function department(){
+    public function user(){
       //who->relation name->to whom  
         // 1 to 1 depenndent = belongsTo
-        // 1 to 1 not dependent = hasOne
-        return $this->belongsTo(Departments::class);
+        return $this->belongsTo(User::class);
     }
 }

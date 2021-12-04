@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersModelsTable extends Migration
+class CreateMobileBankingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateUsersModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_models', function (Blueprint $table) {
+        Schema::create('mobile_bankings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('contact_no');
-            $table->string('email');
-            $table->string('user_id');
-            $table->string('password');
-            $table->string('department_id');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateUsersModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_models');
+        Schema::dropIfExists('mobile_bankings');
     }
 }

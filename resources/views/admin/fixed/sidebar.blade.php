@@ -26,7 +26,7 @@
 
       <!-- Customers -->
       <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="{{url('admin/customers')}}">
+        <a class="side-nav-menu-link media align-items-center" href="{{url('admin/customers-list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -37,6 +37,20 @@
         </a>
       </li>
       <!-- End Customers -->
+
+      <!-- IP & MAC Addresses -->
+      <li class="side-nav-menu-item">
+        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+          <span class="side-nav-menu-icon d-flex mr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+  <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+</svg>
+          </span>
+          <span class="side-nav-fadeout-on-closed media-body">IP & MAC Addresses</span>
+        </a>
+      </li>
+      <!-- End IP & MAC Addresses -->
 
       <!-- Payments -->
       <li class="side-nav-menu-item">
@@ -52,16 +66,21 @@
       <!-- End Payments -->
 
       <!-- Approvals -->
-      <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
-          <span class="side-nav-menu-icon d-flex mr-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-square" viewBox="0 0 16 16">
+      <li class="nav-item dropdown">
+        <a style="color:LightGray;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-square" viewBox="0 0 16 16">
   <path d="M0 6a6 6 0 1 1 12 0A6 6 0 0 1 0 6z"/>
   <path d="M12.93 5h1.57a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1.57a6.953 6.953 0 0 1-1-.22v1.79A1.5 1.5 0 0 0 5.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 4h-1.79c.097.324.17.658.22 1z"/>
 </svg>
-          </span>
-          <span class="side-nav-fadeout-on-closed media-body">Approvals</span>
+        <span class="side-nav-fadeout-on-closed media-body">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Approvals</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+</svg>
         </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Customers Approval</a>
+          <a class="dropdown-item" href="#">Payments Approval</a>
+          <a class="dropdown-item" href="#">Complains Approval</a>
       </li>
       <!-- End Approvals -->
 
@@ -93,23 +112,9 @@
       </li>
       <!-- End Billing -->
 
-      <!-- Employees -->
-      <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
-          <span class="side-nav-menu-icon d-flex mr-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
-  <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-</svg>
-          </span>
-          <span class="side-nav-fadeout-on-closed media-body">Employees</span>
-        </a>
-      </li>
-      <!-- End Emolyees -->
-
       <!-- Employees Salary -->
       <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.empolyees-salary.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
@@ -123,18 +128,31 @@
       </li>
       <!-- End Emolyees Salary -->
 
-      <!-- Assets -->
-      <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+       <!-- Assets Category -->
+       <li class="side-nav-menu-item">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.assets-category.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench" viewBox="0 0 16 16">
   <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z"/>
 </svg>
           </span>
+          <span class="side-nav-fadeout-on-closed media-body">Assets Category</span>
+        </a>
+      </li>
+      <!-- End Assets Category -->
+
+      <!-- Assets -->
+      <li class="side-nav-menu-item">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.assets.list')}}">
+          <span class="side-nav-menu-icon d-flex mr-3">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+  <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+</svg>
+          </span>
           <span class="side-nav-fadeout-on-closed media-body">Assets</span>
         </a>
       </li>
-      <!-- Assets -->
+      <!-- End Assets -->
 
       <!-- Sidebar Sub Title -->
       <li class="sidebar-heading h6">Settings</li>
@@ -164,10 +182,21 @@
       </li>
       <!-- End Add User -->
 
+      <!-- Mobile Banking Settings -->
+      <li class="side-nav-menu-item">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.mobile-banking.list')}}">
+          <span class="side-nav-menu-icon d-flex mr-3">
+            {!! file_get_contents('svg/bank.svg') !!}
+          </span>
+          <span class="side-nav-fadeout-on-closed media-body">Mobile Banking Settings</span>
+        </a>
+      </li>
+      <!-- End Mobile Banking Settings -->
+
 
       <!-- Block settings -->
       <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.blocks.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
           {!! file_get_contents('svg/border-all.svg') !!}
           </span>
@@ -178,7 +207,7 @@
 
       <!-- Package settings -->
       <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.packages.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
           {!! file_get_contents('svg/boxes.svg') !!}
           </span>
@@ -189,7 +218,7 @@
 
       <!-- Site settings -->
       <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.site.info')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
           {!! file_get_contents('svg/window.svg') !!}
           </span>

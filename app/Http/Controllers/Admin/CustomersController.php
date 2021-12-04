@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class CustomersController extends Controller
 {
     public function customersList(){
-        return view('admin.pages.customers');
+        return view('admin.pages.customers-list');
     }
 }

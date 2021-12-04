@@ -11,7 +11,7 @@ class UserDepartmentsController extends Controller
     public function userDepartmentsList()
     {
         $departments=Departments::all();
-        //dd($Departments);
+        //dd($departments);
         return view('admin.pages.user-departments-list',compact('departments'));
     }
 
@@ -27,7 +27,7 @@ class UserDepartmentsController extends Controller
             'name'=>$request->name
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('msg','User Department added successfully.');
     }
 
 
