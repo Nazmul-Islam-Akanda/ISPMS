@@ -28,12 +28,14 @@
 
 <form action="{{route('admin.mobile-banking.store')}}" method="POST">
   @csrf
+  <div class="col-md-3">
   <div class="mb-3">
     <label for="" class="form-label">Mobile Banking Name</label>
     <input name="name" placeholder='Enter Mobile Banking Name' type="text" class="form-control" id="" required>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
 </div>
 

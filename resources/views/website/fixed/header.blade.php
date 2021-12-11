@@ -13,7 +13,7 @@
           <!-- Navbar nav -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link " href="https://yevgenysim.github.io/touche/about-us.html">Reach Us</a>
+              <a class="nav-link " id="scrollDownBtn" >Reach Us</a>
             </li>
           </ul>
 
@@ -37,3 +37,15 @@
         </div>
       </div>
     </nav>
+
+    <script>
+       let btnScrolDown = document.getElementById("scrollDownBtn");
+       btnScrolDown.addEventListener("click",function(){
+            window.scrollTo({
+               top:750,
+               left:0,
+               behavior: 'smooth'
+            });
+       });
+    </script>
+

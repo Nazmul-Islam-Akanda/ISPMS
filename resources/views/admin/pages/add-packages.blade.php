@@ -28,17 +28,33 @@
 
 <form action="{{route('admin.packages.store')}}" method="POST">
   @csrf
+  <!--row start-->
+<div class="row">
+    <!--column start-->
+<div class="col-md-4">
   <div class="mb-3">
     <label for="" class="form-label">Package Name</label>
     <input name="name" placeholder='Enter Package Name' type="text" class="form-control" id="" required>
   </div>
+  </div>
+<!--column end-->
+</div>
+<!--row end-->
 
+<!--row start-->
+<div class="row">
+    <!--column start-->
+  <div class="col-md-4">
   <div class="mb-3">
     <label for="" class="form-label">Price</label>
     <input name="price" placeholder='Enter Package Amount' type="number" class="form-control" id="" required>
   </div>
-
+  
   <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+<!--column end-->
+</div>
+<!--row end-->
 </form>
 </div>
 

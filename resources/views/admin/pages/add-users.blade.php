@@ -44,21 +44,21 @@
 <!--row start-->
 <div class="row">
     <!--column start-->
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Full Name</label>
     <input name="name" placeholder='Enter User Name' type="string" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Contact No.</label>
     <input name="contact_no" placeholder='Enter Mobile Number' type="number" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
     <input name="email" placeholder='Enter your email' type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -71,21 +71,21 @@
 <!--row start-->
 <div class="row">
 <!--column start-->
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">User ID:</label>
     <input name="user_id" placeholder='Enter user id' type="string" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Password:</label>
     <input name="password" placeholder='Enter your password' type="password" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-1">
+<div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Department</label>
             <select name="department" class="form-control" id="exampleFormControlSelect1">
@@ -95,7 +95,7 @@
             </select>
     </div>
 
-<div class="col-xs-4">
+<div class="col-xs-3">
 <div class="mb-3">
             <label for="" class="form-label">Image</label>
             <input name="image" placeholder="Enter picture" type="file" class="form-control" id="">

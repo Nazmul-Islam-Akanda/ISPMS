@@ -34,13 +34,10 @@
 
     
 
-  @include('website.fixed.header')
+  @include('customer.fixed.header')
 
 
   @yield('content')
-    
-
-  @include('website.fixed.footer')
 
 
     <!-- TOAST -->
@@ -56,7 +53,6 @@
     
     <!-- Theme JS -->
     <script src="{{url('/js/website/theme.bundle.js')}}"></script>
-    
 
   </body>
 </html>

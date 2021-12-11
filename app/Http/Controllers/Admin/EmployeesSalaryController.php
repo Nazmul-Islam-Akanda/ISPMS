@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Departments;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class EmployeesSalaryController extends Controller
 {
@@ -14,6 +15,7 @@ class EmployeesSalaryController extends Controller
 
     public function add()
     {
-        return view('admin.pages.add-employees-salary');
+        $departments=Departments::all();
+        return view('admin.pages.add-employees-salary',compact('departments'));
     }
 }

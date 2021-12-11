@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Departments;
 use Illuminate\Http\Request;
 use App\Models\AssetsCategory;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,8 @@ class AssetsController extends Controller
     {
         $categories=AssetsCategory::all();
         //dd($categories);
-        return view('admin.pages.add-assets',compact('categories'));
+        $departments=Departments::all();
+        return view('admin.pages.add-assets',compact('categories','departments'));
     }
 
 }

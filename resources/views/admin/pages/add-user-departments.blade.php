@@ -28,12 +28,13 @@
 
 <form action="{{route('admin.user-departments.store')}}" method="POST">
   @csrf
+  <div class="col-md-3">
   <div class="mb-3">
     <label for="" class="form-label">Department Name</label>
     <input name="name" placeholder='Enter Department Name' type="text" class="form-control" id="" required>
   </div>
-
   <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
 </div>
 

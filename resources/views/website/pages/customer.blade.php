@@ -40,7 +40,7 @@
 <div class="col">
 <div class="mb-3">
     <label for="" class="form-label">Customer ID</label>
-    <input name="customer_id" placeholder='Enter customer ID' type="string" class="form-control" id="">
+    <input name="customer_id" placeholder='Enter customer Email' type="string" class="form-control" id="">
   </div>
 </div>
 

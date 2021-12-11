@@ -44,29 +44,18 @@
 <!--row start-->
 <div class="row">
     <!--column start-->
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Employee Department</label>
             <select name="department" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($departments as $department)
+                @foreach ($departments as $department)
                     <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach--}}
+                    @endforeach
             </select>
     </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
-<div class="form-group">
-            <label for="exampleFormControlSelect1">Employee ID</label>
-            <select name="employee_id" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach--}}
-            </select>
-    </div>
-</div>
-&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Employee Name</label>
             <select name="name" class="form-control" id="exampleFormControlSelect1">
@@ -76,6 +65,13 @@
             </select>
     </div>
 </div>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+<div class="col-md-3">
+<div class="mb-3">
+    <label for="" class="form-label">Employee ID</label>
+    <input name="id" placeholder='Employee ID' type="string" class="form-control" id="">
+  </div>
+</div>
 <!--column end-->
 </div>
 <!--row end-->
@@ -83,7 +79,7 @@
 <!--row start-->
 <div class="row">
 <!--column start-->
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Month</label>
             <select name="month" class="form-control" id="exampleFormControlSelect1">
@@ -102,21 +98,19 @@
             </select>
     </div>
 </div>
-&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Year</label>
     <input name="year" placeholder='Enter Current Year' type="string" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
-    <label for="" class="form-label">Paid Amount</label>
-    <input name="paid" placeholder='Enter Paid amount' type="number" class="form-control" id="">
+    <label for="" class="form-label">Advance</label>
+    <input name="advance" placeholder='Month-Month' type="string" class="form-control" id="">
   </div>
-
 </div>
 <!--column end-->
 </div> 
@@ -125,25 +119,22 @@
 <!--row start-->
 <div class="row">
 <!--column start-->
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
-    <label for="" class="form-label">Due</label>
-    <input name="due" placeholder='Enter due(month)' type="string" class="form-control" id="">
+    <label for="" class="form-label">Paid Amount</label>
+    <input name="paid" placeholder='Enter Paid amount' type="number" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
-<div class="mb-3">
-    <label for="" class="form-label">Advance</label>
-    <input name="advance" placeholder='Enter advance(month)' type="string" class="form-control" id="">
-  </div>
-</div>
-&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-xs-4">
+<div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Bonus</label>
     <input name="bonus" placeholder='Enter bonus amount' type="number" class="form-control" id="">
   </div>
+</div>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+<div class="col-md-3">
+
 
 </div>
 <!--column end-->

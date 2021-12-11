@@ -14,7 +14,8 @@ class SiteInfoController extends Controller
     }
 
     public function add(){
-        return view('admin.pages.add-site-info');
+        $site_infos = SiteInfo::all();
+        return view('admin.pages.add-site-info',compact('site_infos'));
     }
 
     public function store(Request $request){

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AssetsController;
 use App\Http\Controllers\Admin\BlocksController;
 use App\Http\Controllers\Admin\PackagesController;
+use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\SiteInfoController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\MobileBankingController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\Website\WebsiteHomeController;
 use App\Http\Controllers\Admin\AssetsCategoryController;
 use App\Http\Controllers\Admin\EmployeesSalaryController;
 use App\Http\Controllers\Admin\UserDepartmentsController;
+use App\Http\Controllers\Admin\Customers_IP_MAC_Controller;
+use App\Http\Controllers\Customer\CustomersPanelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +38,15 @@ Route::group(['prefix'=>'admin'],function(){
 
     //Customers
     Route::get('/customers-list',[CustomersController::class,'customersList']);
+    Route::get('/add/customers',[CustomersController::class,'add']);
+
+    //Customers IP-MAC Addresses
+    Route::get('/customers-IP-MAC-address-list',[Customers_IP_MAC_Controller::class,'ipMAClist'])->name('admin.customers-IP-MAC.list');
+    route::get('add/customers-IP-MAC-address',[Customers_IP_MAC_Controller::class,'add'])->name('admin.add-customers-IP-MAC');
+
+    //Payments
+    Route::get('/payments-list',[PaymentsController::class,'paymentsList'])->name('admin.payments.list');
+    Route::get('/make/payments',[PaymentsController::class,'add'])->name('admin.payments.add');
 
     //Employees Salary
     route::get('/employees-salary-record',[EmployeesSalaryController::class,'salaryRecord'])->name('admin.empolyees-salary.list');
@@ -89,4 +101,9 @@ Route::group(['prefix'=>'website'],function(){
     route::get('/user-login',[WebsiteHomeController::class,'user'])->name('website.user');
     route::get('/customer-login',[WebsiteHomeController::class,'customer'])->name('website.customer');
 
+});
+
+Route::group(['prefix'=>'customer'],function(){
+    //Customer complain
+    route::get('/complains',[CustomersPanelController::class,'complain'])->name('customer.complains');
 });
