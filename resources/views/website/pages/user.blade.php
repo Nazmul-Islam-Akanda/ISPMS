@@ -7,20 +7,26 @@
 <header  style="background-image: url('/jpg/website/bg1.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover; background-color: #000000;">
       <div class="d-flex flex-column min-vh-100 bg-black-50 pt-10 pt-md-8 pb-7 pb-md-0">  
       <div class="container my-auto"> 
+
+
            <!--form start-->
-<form action="{{route('admin.users.store')}}" method='post' >
+<form action="{{route('website.users.login')}}" method='post' >
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
 
 <!--row start-->
 <div class="row">
+
     <!--column start-->
 <div class="col">
 </div>
 
 <div class="col">
 <div class="mb-3">
+@if(session()->has('msg'))
+<p class="alert alert-danger">&emsp;&emsp;&nbsp;&nbsp;&nbsp;{{session()->get('msg')}}</p>
+@endif
 <h1 style="color:white;"><b>User Login</b></h1>
   </div>
 </div>
@@ -60,7 +66,7 @@
 <div class="col">
 <div class="mb-3">
     <label for="" class="form-label">Password</label>
-    <input name="password" placeholder='Enter your password' type="string" class="form-control" id="">
+    <input name="password" placeholder='Enter your password' type="password" class="form-control" id="">
   </div>
 </div>
 

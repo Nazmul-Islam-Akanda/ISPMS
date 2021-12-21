@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SiteInfoController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\MobileBankingController;
 use App\Http\Controllers\Website\WebsiteHomeController;
+use App\Http\Controllers\Website\WebsiteUserController;
 use App\Http\Controllers\Admin\AssetsCategoryController;
 use App\Http\Controllers\Admin\EmployeesSalaryController;
 use App\Http\Controllers\Admin\UserDepartmentsController;
@@ -39,10 +40,12 @@ Route::group(['prefix'=>'admin'],function(){
     //Customers
     Route::get('/customers-list',[CustomersController::class,'customersList']);
     Route::get('/add/customers',[CustomersController::class,'add']);
+    Route::post('/customers/store',[CustomersController::class,'store']);
 
     //Customers IP-MAC Addresses
     Route::get('/customers-IP-MAC-address-list',[Customers_IP_MAC_Controller::class,'ipMAClist'])->name('admin.customers-IP-MAC.list');
     route::get('add/customers-IP-MAC-address',[Customers_IP_MAC_Controller::class,'add'])->name('admin.add-customers-IP-MAC');
+    route::post('/customers-IP-MAC-address/store',[Customers_IP_MAC_Controller::class,'store'])->name('admin.customers-IP-MAC.store');
 
     //Payments
     Route::get('/payments-list',[PaymentsController::class,'paymentsList'])->name('admin.payments.list');
@@ -100,6 +103,10 @@ Route::group(['prefix'=>'website'],function(){
     route::get('/home',[WebsiteHomeController::class,'home'])->name('website.home');
     route::get('/user-login',[WebsiteHomeController::class,'user'])->name('website.user');
     route::get('/customer-login',[WebsiteHomeController::class,'customer'])->name('website.customer');
+
+    //User Or Admin Login
+    Route::post('/user/login',[WebsiteUserController::class,'userLogin'])->name('website.users.login');
+    Route::get('user/logout',[WebsiteUserController::class,'userLogout'])->name('website.users.logout');
 
 });
 

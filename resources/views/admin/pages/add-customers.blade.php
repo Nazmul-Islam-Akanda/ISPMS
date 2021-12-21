@@ -6,9 +6,9 @@
 <h1>Add Customers</h1>
 
 <!--temporary success message start-->
-{{--@if(session()->has('msg'))
+@if(session()->has('msg'))
 <p class="alert alert-success">{{session()->get('msg')}}</p>
-@endif--}
+@endif
 <!--temporary success message end-->
 
 <!--server side validation start-->
@@ -23,21 +23,15 @@
 @endif--}}
 <!--server side validation end-->
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
 
 <a href="{{url('admin/customers-list')}}" class="btn" style="background-color:lightgray; border-radius:10px">Back</a>
 
 <div>
-<form action="{{route('admin.users.store')}}" method='post' enctype="multipart/form-data">
+<form action="{{url('admin/customers/store')}}" method='post' enctype="multipart/form-data">
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -86,7 +80,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input name="email" placeholder='Enter customer email' type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input name="email" placeholder='Enter customer email' type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
@@ -106,7 +100,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Connection Date</label>
-    <input name="date" placeholder='Connection date here' type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input name="date" placeholder='Connection date here' type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
@@ -123,7 +117,7 @@
 <div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Bill Type</label>
-            <select name="customer_type" class="form-control" id="exampleFormControlSelect1">
+            <select name="bill_type" class="form-control" id="exampleFormControlSelect1">
                     <option>Prepaid</option>
                     <option>Post paid</option>
             </select>
@@ -139,7 +133,7 @@
     <div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Package</label>
-            <select name="block" class="form-control" id="exampleFormControlSelect1">
+            <select name="package" class="form-control" id="exampleFormControlSelect1">
                 @foreach ($packages as $package)
                     <option value="{{$package->id}}">{{$package->name}}</option>
                     @endforeach
@@ -157,7 +151,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Service Charge</label>
-    <input name="service_charge" placeholder='Enter connection charge' type="number" class="form-control" id="" required>
+    <input name="service_charge" placeholder='Enter connection charge' type="number" class="form-control" id="">
   </div>
 </div>
 <!--column end-->
@@ -173,8 +167,8 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Lineman Department</label>
             <select name="department" class="form-control" id="exampleFormControlSelect1">
-                @foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
+                @foreach ($blocks as $block)
+                    <option value="{{$block->id}}">{{$block->user->department->name}}</option>
                     @endforeach
             </select>
     </div>
@@ -184,18 +178,22 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Lineman</label>
             <select name="user" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach--}}
+                    @foreach ($blocks as $block)
+                    <option value="{{$block->id}}">{{$block->user->name}}</option>
+                    @endforeach
             </select>
     </div>
 </div>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
-<div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Lineman ID</label>
-    <input name="user_id" placeholder='Technician ID' type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
+<div class="form-group">
+            <label for="exampleFormControlSelect1">Lineman ID</label>
+            <select name="user_id" class="form-control" id="exampleFormControlSelect1">
+                    @foreach ($blocks as $block)
+                    <option value="{{$block->id}}">{{$block->user->user_id}}</option>
+                    @endforeach
+            </select>
+    </div>
 
 <div class="col-xs-1">
 <div class="mb-3">

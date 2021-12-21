@@ -5,11 +5,12 @@
 <div class="container">
 <h1>Add Customers IP & MAC Address</h1>
 
-<!--temporary success message start-->
-{{--@if(session()->has('msg'))
+
+@if(session()->has('msg'))
 <p class="alert alert-success">{{session()->get('msg')}}</p>
-@endif--}
-<!--temporary success message end-->
+@endif
+
+
 
 <!--server side validation start-->
 {{--@if ($errors->any())
@@ -23,21 +24,14 @@
 @endif--}}
 <!--server side validation end-->
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
 <a href="{{route('admin.customers-IP-MAC.list')}}" class="btn" style="background-color:lightgray; border-radius:10px">Back</a>
 
 <div>
-<form action="{{route('admin.users.store')}}" method='post' enctype="multipart/form-data">
+<form action="{{route('admin.customers-IP-MAC.store')}}" method='post'>
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -48,25 +42,29 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Customer Name</label>
             <select name="customer_name" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($blocks as $block)
-                    <option value="{{$block->id}}">{{$block->name}}</option>
-                    @endforeach--}}
+                @foreach ($customers as $customer)
+                    <option value="{{$customer->id}}">{{$customer->customer_name}}</option>
+                    @endforeach
             </select>
     </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
 <div class="col-md-3">
-<div class="mb-3">
-    <label for="" class="form-label">Customer ID</label>
-    <input name="customer_id" placeholder='Client name' type="string" class="form-control" id="" required>
-  </div>
+<div class="form-group">
+            <label for="exampleFormControlSelect1">Customer ID</label>
+            <select name="customer_id" class="form-control" id="exampleFormControlSelect1">
+                @foreach ($customers as $customer)
+                    <option value="{{$customer->id}}">{{$customer->customer_id}}</option>
+                    @endforeach
+            </select>
+    </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Connection Type</label>
-            <select name="customer_type" class="form-control" id="exampleFormControlSelect1">
+            <select name="connection_type" class="form-control" id="exampleFormControlSelect1">
                     <option>Dedicated</option>
                     <option>Shared</option>
             </select>
@@ -89,7 +87,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">MAC address</label>
-    <input name="mac" placeholder='Client MAC address' type="string" class="form-control" id="" required>
+    <input name="mac" placeholder='Client MAC address' type="string" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;

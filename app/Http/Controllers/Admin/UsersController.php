@@ -12,7 +12,7 @@ class UsersController extends Controller
 {
     public function usersList()
     {
-        $users = User::with('department')->get();
+        $users = User::with('department')->Where('department_id','=','1')->get();
         return view('admin.pages.users-list',compact('users'));
     }
 
@@ -53,7 +53,7 @@ class UsersController extends Controller
             'contact_no'=>$request->contact_no,
             'email'=>$request->email,
             'user_id'=>$request->user_id,
-            'password'=>$request->password,
+            'password'=>bcrypt($request->password),
             'department_id'=>$request->department,
             'image'=>$filename
 

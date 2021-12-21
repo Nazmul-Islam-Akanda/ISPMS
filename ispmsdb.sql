@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 02:55 PM
+-- Generation Time: Dec 20, 2021 at 05:52 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -69,6 +69,67 @@ INSERT INTO `blocks` (`id`, `name`, `info`, `user_id`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `block_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contact_no` int(11) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `customer_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bill_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `package_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `charge` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `service_charge` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `department_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lineman_name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lineman_user_id_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `block_id`, `customer_name`, `address`, `contact_no`, `email`, `customer_id`, `date`, `customer_type`, `bill_type`, `package_id`, `charge`, `service_charge`, `department_id`, `lineman_name_id`, `lineman_user_id_id`, `image`, `created_at`, `updated_at`) VALUES
+(1, '2', 'Nazmul Naeem', 'House-4, Road-13/B, Sector-11', 1683674564, 'nazmulnaeem@gmail.com', 'nazmulnaeem@gmail.com', '2021-12-15', 'Home', 'Prepaid', '1', '500', '1000', '1', '1', '1', '20211215041251.jpg', '2021-12-15 10:49:51', '2021-12-15 10:49:51'),
+(2, '1', 'Nz', 'House-3, Road-13/B, Sector-10', 178987654, 'nz@gmail.com', 'nz@gmail.com', '2021-12-16', 'Home', 'Prepaid', '1', '500', NULL, '1', '2', '2', '20211215081247.jpg', '2021-12-15 14:00:47', '2021-12-15 14:00:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers_i_p_m_a_c_s`
+--
+
+CREATE TABLE `customers_i_p_m_a_c_s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_id_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mac` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers_i_p_m_a_c_s`
+--
+
+INSERT INTO `customers_i_p_m_a_c_s` (`id`, `customer_name_id`, `customer_id_id`, `connection_type`, `ip`, `mac`, `created_at`, `updated_at`) VALUES
+(1, '1', '1', 'Dedicated', '127.16.1.0', NULL, '2021-12-15 12:37:40', '2021-12-15 12:37:40'),
+(2, '2', '2', 'Shared', '127.16.1.0', '128.24.0.1', '2021-12-15 14:01:04', '2021-12-15 14:01:04');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `departments`
 --
 
@@ -120,7 +181,6 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
@@ -129,7 +189,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2021_11_27_181343_create_packages_table', 2),
 (10, '2021_12_03_112116_create_mobile_bankings_table', 4),
 (12, '2021_11_30_091218_create_site_infos_table', 5),
-(13, '2021_12_04_083113_create_assets_categories_table', 6);
+(13, '2021_12_04_083113_create_assets_categories_table', 6),
+(16, '2021_12_12_175406_create_customers_table', 7),
+(18, '2021_12_15_172220_create_customers_i_p_m_a_c_s_table', 8),
+(20, '2014_10_12_000000_create_users_table', 9);
 
 -- --------------------------------------------------------
 
@@ -242,10 +305,12 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_no` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_varified_at` timestamp NULL DEFAULT NULL,
   `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `department_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -254,9 +319,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `contact_no`, `email`, `user_id`, `password`, `department_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Nazmul Islam Akanda', 1683674237, '18103192nazmul@gmail.com', '18103192nazmul@gmail.com', '12345', '1', '20211127031123.png', '2021-11-27 09:40:23', '2021-11-27 09:40:23'),
-(2, 'Nazmul Islam', 1725674865, 'nazmul@gmail.com', 'nazmul@gmail.com', '123456', '2', '20211127031147.jpg', '2021-11-27 09:40:47', '2021-11-27 09:40:47');
+INSERT INTO `users` (`id`, `name`, `contact_no`, `email`, `email_varified_at`, `user_id`, `password`, `department_id`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Nazmul Islam', 1683674237, 'nazmul@gmail.com', NULL, 'nazmul@gmail.com', '$2y$10$duELP58OQSFRSiMDiuJkZOGeZDwFTEZa.9pEAMkkDhuBNNS15c/gC', '1', '20211216031237.jpg', NULL, '2021-12-16 09:17:37', '2021-12-16 09:17:37'),
+(2, 'Nazmul Islam Akanda', 1683674237, '18103192nazmul@gmail.com', NULL, '18103192nazmul@gmail.com', '$2y$10$3aMnPB./dxPMQVAPQ5BNKuo5RuPG2ooo9qxO5lIHONrzEtXwRQKnm', '2', '20211216031205.png', NULL, '2021-12-16 09:18:05', '2021-12-16 09:18:05');
 
 --
 -- Indexes for dumped tables
@@ -272,6 +337,18 @@ ALTER TABLE `assets_categories`
 -- Indexes for table `blocks`
 --
 ALTER TABLE `blocks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers_i_p_m_a_c_s`
+--
+ALTER TABLE `customers_i_p_m_a_c_s`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -349,6 +426,18 @@ ALTER TABLE `blocks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `customers_i_p_m_a_c_s`
+--
+ALTER TABLE `customers_i_p_m_a_c_s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
@@ -364,7 +453,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `mobile_bankings`

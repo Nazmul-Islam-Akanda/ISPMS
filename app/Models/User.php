@@ -11,8 +11,32 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory;
-    protected $guarded=[];
+    use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'contact_no',
+        'email',
+        'user_id',
+        'password',
+        'department_id',
+        'image',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     //relation
     public function department(){
@@ -21,4 +45,15 @@ class User extends Authenticatable
         // 1 to 1 not dependent = hasOne
         return $this->belongsTo(Departments::class);
     }
+
+
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

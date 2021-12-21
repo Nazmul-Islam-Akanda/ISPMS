@@ -38,6 +38,7 @@
       </div>
     </nav>
 
+    <!-- Scrolldown js -->
     <script>
        let btnScrolDown = document.getElementById("scrollDownBtn");
        btnScrolDown.addEventListener("click",function(){
