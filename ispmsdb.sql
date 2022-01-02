@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2021 at 05:52 PM
+-- Generation Time: Dec 30, 2021 at 02:53 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -86,9 +86,9 @@ CREATE TABLE `customers` (
   `package_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `charge` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `service_charge` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `department_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lineman_name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lineman_user_id_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lineman_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -98,9 +98,9 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `block_id`, `customer_name`, `address`, `contact_no`, `email`, `customer_id`, `date`, `customer_type`, `bill_type`, `package_id`, `charge`, `service_charge`, `department_id`, `lineman_name_id`, `lineman_user_id_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, '2', 'Nazmul Naeem', 'House-4, Road-13/B, Sector-11', 1683674564, 'nazmulnaeem@gmail.com', 'nazmulnaeem@gmail.com', '2021-12-15', 'Home', 'Prepaid', '1', '500', '1000', '1', '1', '1', '20211215041251.jpg', '2021-12-15 10:49:51', '2021-12-15 10:49:51'),
-(2, '1', 'Nz', 'House-3, Road-13/B, Sector-10', 178987654, 'nz@gmail.com', 'nz@gmail.com', '2021-12-16', 'Home', 'Prepaid', '1', '500', NULL, '1', '2', '2', '20211215081247.jpg', '2021-12-15 14:00:47', '2021-12-15 14:00:47');
+INSERT INTO `customers` (`id`, `block_id`, `customer_name`, `address`, `contact_no`, `email`, `customer_id`, `date`, `customer_type`, `bill_type`, `package_id`, `charge`, `service_charge`, `department_id`, `lineman_id`, `status`, `image`, `created_at`, `updated_at`) VALUES
+(1, '1', 'Nazmul', 'House-4,Road-12/B,Sector-10', 1683674237, 'nazmul@gmail.com', 'nazmul@gmail.com', '2021-12-30', 'Home', 'Prepaid', '1', NULL, '1000', '1', '2', 'Active', '20211230091206.jpg', '2021-12-30 03:06:06', '2021-12-30 03:06:06'),
+(2, '2', 'nz', 'House-4,Road-13/B,Sector-11', 1725893585, 'nz@gmail.com', 'nz@gmail.com', '2021-12-30', 'Office', 'Post paid', '2', NULL, NULL, NULL, '1', 'Deactive', '20211230091245.jpg', '2021-12-30 03:07:45', '2021-12-30 03:07:45');
 
 -- --------------------------------------------------------
 
@@ -190,9 +190,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2021_12_03_112116_create_mobile_bankings_table', 4),
 (12, '2021_11_30_091218_create_site_infos_table', 5),
 (13, '2021_12_04_083113_create_assets_categories_table', 6),
-(16, '2021_12_12_175406_create_customers_table', 7),
 (18, '2021_12_15_172220_create_customers_i_p_m_a_c_s_table', 8),
-(20, '2014_10_12_000000_create_users_table', 9);
+(32, '2014_10_12_000000_create_users_table', 9),
+(41, '2021_12_12_175406_create_customers_table', 10),
+(42, '2021_12_30_093833_create_payments_table', 11);
 
 -- --------------------------------------------------------
 
@@ -248,6 +249,34 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `due` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `advance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment` int(11) NOT NULL,
+  `month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `collector_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `customer_id`, `due`, `advance`, `payment`, `month`, `year`, `collector_id`, `discount`, `reason`, `created_at`, `updated_at`) VALUES
+(1, '1', NULL, NULL, 500, 'December', '2021', '1', NULL, NULL, '2021-12-30 03:57:06', '2021-12-30 03:57:06');
 
 -- --------------------------------------------------------
 
@@ -308,7 +337,8 @@ CREATE TABLE `users` (
   `email_varified_at` timestamp NULL DEFAULT NULL,
   `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `department_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -319,9 +349,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `contact_no`, `email`, `email_varified_at`, `user_id`, `password`, `department_id`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Nazmul Islam', 1683674237, 'nazmul@gmail.com', NULL, 'nazmul@gmail.com', '$2y$10$duELP58OQSFRSiMDiuJkZOGeZDwFTEZa.9pEAMkkDhuBNNS15c/gC', '1', '20211216031237.jpg', NULL, '2021-12-16 09:17:37', '2021-12-16 09:17:37'),
-(2, 'Nazmul Islam Akanda', 1683674237, '18103192nazmul@gmail.com', NULL, '18103192nazmul@gmail.com', '$2y$10$3aMnPB./dxPMQVAPQ5BNKuo5RuPG2ooo9qxO5lIHONrzEtXwRQKnm', '2', '20211216031205.png', NULL, '2021-12-16 09:18:05', '2021-12-16 09:18:05');
+INSERT INTO `users` (`id`, `name`, `contact_no`, `email`, `email_varified_at`, `user_id`, `password`, `department_id`, `role`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 1683674237, 'admin@gmail.com', NULL, 'admin@gmail.com', '$2y$10$e8FOhQZXpb1kH6w1NI5zjO/9sOIuWzKmkd0UBnGoAinYnUKgoqgLG', NULL, 'Admin', '', NULL, '2021-12-27 13:23:11', '2021-12-27 13:23:11'),
+(2, 'Nazmul Islam Akanda', 1725869365, '18103192nazmul@gmail.com', NULL, '18103192nazmul@gmail.com', '$2y$10$cDxA0w0sR96xBSH3GdbJ8.gknU9Xn6wDDRyC6c99IcNMVpJ09ypyC', '1', 'Technician', '20211227071258.jpg', NULL, '2021-12-27 13:23:58', '2021-12-27 13:23:58'),
+(3, 'Nazmul Islam', 1683594525, 'nazmulislam@gmail.com', NULL, 'nazmulislam@gmail.com', '$2y$10$AiUyqGHRu6pJoWVfs1eLsOV8zb5/B2dDl2Ue/NwzYiD/.Yqpofnem', '2', 'Accountant', '20211227071244.jpg', NULL, '2021-12-27 13:24:44', '2021-12-27 13:24:44');
 
 --
 -- Indexes for dumped tables
@@ -389,6 +420,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -453,7 +490,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `mobile_bankings`
@@ -466,6 +503,12 @@ ALTER TABLE `mobile_bankings`
 --
 ALTER TABLE `packages`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -483,7 +526,7 @@ ALTER TABLE `site_infos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

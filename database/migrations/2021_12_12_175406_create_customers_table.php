@@ -27,11 +27,10 @@ class CreateCustomersTable extends Migration
             $table->string('package_id');
             $table->string('charge')->nullable();
             $table->string('service_charge')->nullable();
-            $table->string('department_id');
-            $table->string('lineman_name_id');
-            $table->string('lineman_user_id_id');
+            $table->string('department_id')->nullable();
+            $table->string('lineman_id');
+            $table->string('status');
             $table->string('image');
-            //$table->string('status')->default('active');
             $table->timestamps();
         });
     }

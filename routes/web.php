@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BlocksController;
 use App\Http\Controllers\Admin\PackagesController;
 use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\SiteInfoController;
+use App\Http\Controllers\Admin\ComplainsController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\MobileBankingController;
 use App\Http\Controllers\Website\WebsiteHomeController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\EmployeesSalaryController;
 use App\Http\Controllers\Admin\UserDepartmentsController;
 use App\Http\Controllers\Admin\Customers_IP_MAC_Controller;
 use App\Http\Controllers\Customer\CustomersPanelController;
+use App\Http\Controllers\Website\WebsiteCustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,7 @@ Route::get('/', function () {
      return redirect()->route('website.home');
 });
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>['auth','Admin']],function(){
     Route::get('/dashboards',[HomeController::class,'dashboard'])->name('dashboard');
 
     //Customers
@@ -50,10 +52,15 @@ Route::group(['prefix'=>'admin'],function(){
     //Payments
     Route::get('/payments-list',[PaymentsController::class,'paymentsList'])->name('admin.payments.list');
     Route::get('/make/payments',[PaymentsController::class,'add'])->name('admin.payments.add');
+    Route::post('/payments/store',[PaymentsController::class,'store'])->name('admin.payments.store');
+
+    //Complains
+    Route::get('/complains-list',[ComplainsController::class,'complainsList'])->name('admin.complains.list');
 
     //Employees Salary
     route::get('/employees-salary-record',[EmployeesSalaryController::class,'salaryRecord'])->name('admin.empolyees-salary.list');
     route::get('/add/employees-salary',[EmployeesSalaryController::class,'add'])->name('admin.employees-salary.add');
+    route::post('/employees-salary/store',[EmployeesSalaryController::class,'store'])->name('admin.employees-salary.store');
 
     //Assets Category
     route::get('/assets-category-list',[AssetsCategoryController::class,'assetsCategory'])->name('admin.assets-category.list');
@@ -63,6 +70,7 @@ Route::group(['prefix'=>'admin'],function(){
     //Assets
     route::get('/assets-list',[AssetsController::class,'assetsList'])->name('admin.assets.list');
     route::get('add/assets-list',[AssetsController::class,'add'])->name('admin.assets.add');
+    route::post('/assets/store',[AssetsController::class,'store'])->name('admin.assets.store');
 
     //User Departments
     route::get('/user-departments-list',[UserDepartmentsController::class,'userDepartmentsList'])->name('admin.user-departments.list');
@@ -101,16 +109,27 @@ Route::group(['prefix'=>'website'],function(){
 
     //Website Home
     route::get('/home',[WebsiteHomeController::class,'home'])->name('website.home');
-    route::get('/user-login',[WebsiteHomeController::class,'user'])->name('website.user');
+    route::get('/user-login',[WebsiteHomeController::class,'user'])->name('website.user');//every route of admin panel goes here
     route::get('/customer-login',[WebsiteHomeController::class,'customer'])->name('website.customer');
 
-    //User Or Admin Login
+    //User Or Admin Login and logout
     Route::post('/user/login',[WebsiteUserController::class,'userLogin'])->name('website.users.login');
     Route::get('user/logout',[WebsiteUserController::class,'userLogout'])->name('website.users.logout');
+    // Route::post('/user/login',[WebsiteUserController::class,'userLogin'])->name('website.users.login');
+    // Route::get('user/logout',[WebsiteUserController::class,'userLogout'])->name('website.users.logout');
+
+    //Customer Login and logout
+    Route::post('/customer/login',[WebsiteCustomerController::class,'customerLogin'])->name('website.customers.login');
+    Route::get('/customer/logout',[WebsiteCustomerController::class,'customerLogout'])->name('website.customers.logout');
 
 });
 
-Route::group(['prefix'=>'customer'],function(){
+Route::group(['prefix'=>'customer','middleware'=>['auth','Customer']],function(){
     //Customer complain
     route::get('/complains',[CustomersPanelController::class,'complain'])->name('customer.complains');
+    route::post('/complains/store',[CustomersPanelController::class,'complainStore'])->name('website.complain.store');
+
+    //Customer Payment
+    route::get('/payments',[CustomersPanelController::class,'payment'])->name('customer.payments');
+    route::post('/payments/store',[CustomersPanelController::class,'paymentStore'])->name('website.payment.store');
 });

@@ -27,6 +27,7 @@
     </tr>
   </thead>
   <tbody>
+    {{--@dd($blocks)--}}
 @foreach ($blocks as $key=>$block)
     <tr>
       <th> {{$key+1}} </th>

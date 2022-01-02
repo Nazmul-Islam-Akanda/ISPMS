@@ -74,21 +74,31 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Password:</label>
-    <input name="password" placeholder='Enter your password' type="password" class="form-control" id="">
+    <input name="password" placeholder='If Customer Enter Contact No.' type="password" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
 <div class="form-group">
-            <label for="exampleFormControlSelect1">Department</label>
-            <select name="department" class="form-control" id="exampleFormControlSelect1">
+            <label for="exampleFormControlSelect1">Employee Department</label>
+            <select name="department" placeholder='Department' class="form-control" id="exampleFormControlSelect1">
                 @foreach ($departments as $department)
                     <option value="{{$department->id}}">{{$department->name}}</option>
                     @endforeach
+                    <option></option>
             </select>
     </div>
 
 <div class="col-xs-3">
+<div class="mb-3">
+            <label for="" class="form-label">Role</label>
+            <select name="role" placeholder='' class="form-control" id="exampleFormControlSelect1">
+                    <option>Technician</option>
+                    <option>Accountant</option>
+                    <option>Customer</option>
+                    <option></option>
+            </select>
+        </div>
 <div class="mb-3">
             <label for="" class="form-label">Image</label>
             <input name="image" placeholder="Enter picture" type="file" class="form-control" id="">

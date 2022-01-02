@@ -167,9 +167,10 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Lineman Department</label>
             <select name="department" class="form-control" id="exampleFormControlSelect1">
-                @foreach ($blocks as $block)
-                    <option value="{{$block->id}}">{{$block->user->department->name}}</option>
+                @foreach ($departments as $department)
+                    <option value="{{$department->id}}">{{$department->name}}</option>
                     @endforeach
+                    <option></option>
             </select>
     </div>
 </div>
@@ -178,8 +179,8 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Lineman</label>
             <select name="user" class="form-control" id="exampleFormControlSelect1">
-                    @foreach ($blocks as $block)
-                    <option value="{{$block->id}}">{{$block->user->name}}</option>
+                    @foreach ($users as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
             </select>
     </div>
@@ -189,21 +190,44 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Lineman ID</label>
             <select name="user_id" class="form-control" id="exampleFormControlSelect1">
-                    @foreach ($blocks as $block)
-                    <option value="{{$block->id}}">{{$block->user->user_id}}</option>
+                    @foreach ($users as $user)
+                    <option value="{{$user->id}}">{{$user->user_id}}</option>
                     @endforeach
             </select>
     </div>
+                </div>
+<!--column end-->
+</div> 
+<!--row end-->
 
+
+<!--row start-->
+<div class="row">
+    <!--column start-->
+    <div class="col-md-3">
+
+</div>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+<div class="col-md-3">
+<div class="form-group">
+            <label for="exampleFormControlSelect1">Status</label>
+            <select name="status" class="form-control" id="exampleFormControlSelect1">
+                    <option>Active</option>
+                    <option>Deactive</option>
+            </select>
+    </div>
+</div>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+<div class="col-md-3">
 <div class="col-xs-1">
 <div class="mb-3">
             <label for="" class="form-label">Customer Photo</label>
             <input name="image" placeholder="Enter picture" type="file" class="form-control" id="">
         </div>
 </div>
-                </div>
+</div>
 <!--column end-->
-</div> 
+</div>
 <!--row end-->
 
   <button type="submit" class="btn btn-primary">Submit</button>

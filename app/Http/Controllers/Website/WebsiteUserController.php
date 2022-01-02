@@ -14,7 +14,7 @@ class WebsiteUserController extends Controller
         // dd($userPost);
         // dd(Auth::attempt($userPost));
         if (Auth::attempt($userPost)){
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('msg','Login successful.');
         }
         else
         return redirect()->back()->with('msg','Incorrect User ID or Password!');
@@ -22,6 +22,6 @@ class WebsiteUserController extends Controller
 
     public function userLogout(){
         Auth::logout();
-        return redirect()->route('website.user');
+        return redirect()->route('website.user')->with('msg','Signed out.');
     }
 }

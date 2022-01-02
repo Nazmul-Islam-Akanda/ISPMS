@@ -16,7 +16,7 @@ class WebsiteHomeController extends Controller
         return view('website.pages.home',compact('packages','site_infos'));
     }
 
-    public function user()
+    public function user()//Admin/User Login
     {
         $packages=Packages::all();
         $site_infos = SiteInfo::all();

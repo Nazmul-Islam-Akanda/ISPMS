@@ -1,11 +1,12 @@
   <aside id="sidebar" class="js-custom-scroll side-nav">
-   
+  @if(auth()->user()->role=='Admin' || auth()->user()->role=='Technician' || auth()->user()->role=='Accountant')
      <ul id="sideNav" class="side-nav-menu side-nav-menu-top-level mb-0">
       <!-- Sidebar Sub Title -->
       <li class="sidebar-heading h6">Dashboards</li>
       <!-- End Sidebar Sub Title -->
 
       <!-- Dashboards -->
+      
       <li class="side-nav-menu-item active">
         <a class="side-nav-menu-link media align-items-center" href="{{route('dashboard')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
@@ -17,14 +18,18 @@
           <span class="side-nav-fadeout-on-closed media-body">Dashboards</span>
         </a>
       </li>
+      @endif
       <!-- End Dashboards -->
 
 
       <!-- Sidebar Sub Title -->
+      @if(auth()->user()->role=='Admin' || auth()->user()->role=='Technician' || auth()->user()->role=='Accountant')
       <li class="sidebar-heading h6">Actions</li>
+      @endif
       <!-- End Sidebar Sub Title -->
 
       <!-- Customers -->
+      @if(auth()->user()->role=='Admin' || auth()->user()->role=='Technician')
       <li class="side-nav-menu-item">
         <a class="side-nav-menu-link media align-items-center" href="{{url('admin/customers-list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
@@ -50,9 +55,11 @@
           <span class="side-nav-fadeout-on-closed media-body">IP & MAC Addresses</span>
         </a>
       </li>
+      @endif
       <!-- End IP & MAC Addresses -->
 
       <!-- Payments -->
+      @if(auth()->user()->role=='Admin' || auth()->user()->role=='Accountant')
       <li class="side-nav-menu-item">
         <a class="side-nav-menu-link media align-items-center" href="{{route('admin.payments.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
@@ -63,6 +70,7 @@
           <span class="side-nav-fadeout-on-closed media-body">Payments</span>
         </a>
       </li>
+      @endif
       <!-- End Payments -->
 
       <!-- Approvals -->
@@ -85,8 +93,9 @@
       <!-- End Approvals -->
 
       <!-- Complains -->
+      @if(auth()->user()->role=='Admin' || auth()->user()->role=='Technician')
       <li class="side-nav-menu-item">
-        <a class="side-nav-menu-link media align-items-center" href="../../demo-crypto/actions/affiliate-program.html">
+        <a class="side-nav-menu-link media align-items-center" href="{{route('admin.complains.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-exclamation" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471 1.069.64.257.155.257-.154 1.33-.798L15 5.383V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825Zm1.22-.434L1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217L9.072 7.774 8 8.417l-1.072-.643ZM12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0V11Zm0 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/>
@@ -95,6 +104,7 @@
           <span class="side-nav-fadeout-on-closed media-body">Complains</span>
         </a>
       </li>
+      @endif
       <!-- End Complains -->
 
       <!-- Billing -->
@@ -113,6 +123,7 @@
       <!-- End Billing -->
 
       <!-- Employees Salary -->
+      @if(auth()->user()->role=='Admin')
       <li class="side-nav-menu-item">
         <a class="side-nav-menu-link media align-items-center" href="{{route('admin.empolyees-salary.list')}}">
           <span class="side-nav-menu-icon d-flex mr-3">
@@ -166,7 +177,7 @@
           <span class="side-nav-menu-icon d-flex mr-3">
             {!! file_get_contents('svg/house-door.svg') !!}
           </span>
-          <span class="side-nav-fadeout-on-closed media-body">User Departments</span>
+          <span class="side-nav-fadeout-on-closed media-body">Employee Departments</span>
         </a>
       </li>
       <!-- End User Departments -->
@@ -229,6 +240,6 @@
 
       <!-- End Settings -->
     </ul>
-  
+    @endif
   </aside>
   <!-- End Sidebar Nav -->

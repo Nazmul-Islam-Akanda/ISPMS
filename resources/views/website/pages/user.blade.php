@@ -25,7 +25,7 @@
 <div class="col">
 <div class="mb-3">
 @if(session()->has('msg'))
-<p class="alert alert-danger">&emsp;&emsp;&nbsp;&nbsp;&nbsp;{{session()->get('msg')}}</p>
+<p class="alert alert-danger">&emsp;&emsp;&nbsp;&nbsp;&nbsp;<b>{{session()->get('msg')}}</b></p>
 @endif
 <h1 style="color:white;"><b>User Login</b></h1>
   </div>

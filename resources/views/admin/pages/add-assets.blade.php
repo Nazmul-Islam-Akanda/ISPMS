@@ -19,7 +19,7 @@
 <a href="{{route('admin.assets.list')}}" class="btn" style="background-color:lightgray; border-radius:10px">Back</a>
 
 <div>
-<form action="{{route('admin.users.store')}}" method='post' >
+<form action="{{route('admin.assets.store')}}" method='post' >
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -29,7 +29,7 @@
 <div class="col-md-3">
 <div class="form-group">
             <label for="exampleFormControlSelect1">Category</label>
-            <select name="department" class="form-control" id="exampleFormControlSelect1">
+            <select name="category" class="form-control" id="exampleFormControlSelect1">
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
@@ -40,14 +40,14 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Asset Name</label>
-    <input name="asset_name" placeholder='Enter asset name' type="string" class="form-control" id="">
+    <input name="asset_name" placeholder='Enter asset name' type="string" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
 <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Quantity</label>
-    <input name="quantity" placeholder='number of assets' type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input name="quantity" placeholder='number of assets' type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
   </div>
 </div>
 <!--column end-->
@@ -59,10 +59,10 @@
 <!--column start-->
 <div class="col-md-3">
 <div class="form-group">
-            <label for="exampleFormControlSelect1">User Department</label>
-            <select name="department" class="form-control" id="exampleFormControlSelect1">
-                {@foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
+            <label for="exampleFormControlSelect1">Assigned User ID</label>
+            <select name="user_id" class="form-control" id="exampleFormControlSelect1">
+                @foreach ($users as $user)
+                    <option value="{{$user->id}}">{{$user->user_id}}</option>
                     @endforeach
             </select>
     </div>
@@ -70,22 +70,14 @@
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
 <div class="form-group">
-            <label for="exampleFormControlSelect1">Assigned User</label>
-            <select name="user" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach--}}
+            <label for="exampleFormControlSelect1">Status</label>
+            <select name="status" class="form-control" id="exampleFormControlSelect1">
+                    <option>Active</option>
+                    <option>Deactive</option>
             </select>
     </div>
 </div>
-&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
-<div class="col-md-3">
-<div class="mb-3">
-    <label for="" class="form-label">Assigned User ID</label>
-    <input name="user_id" placeholder='Assigned user ID' type="string" class="form-control" id="">
-  </div>
 
-</div>
 <!--column end-->
 </div> 
 <!--row end-->

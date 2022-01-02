@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Blocks;
 use App\Models\Packages;
 use App\Models\Customers;
+use App\Models\Departments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CustomersController extends Controller
 {
     public function customersList(){
-        $customers=Customers::with('block','package')->get();
+        $customers=Customers::with('block','package','department','user')->get();
         return view('admin.pages.customers-list',compact('customers'));
     }
 
     public function add()
     {
-        $blocks = Blocks::with('user')->get();
+        $blocks = Blocks::all();
         $packages=Packages::all();
-        return view('admin.pages.add-customers',compact('blocks','packages'));
+        $departments=Departments::where('name','Technical')->get();
+        $users = User::where('role','Technician')->orWhere('role','Admin')->get();
+        return view('admin.pages.add-customers',compact('blocks','packages','departments','users'));
     }
 
     public function store(Request $request)
@@ -56,8 +60,9 @@ class CustomersController extends Controller
             'charge'=>$request->charge,
             'service_charge'=>$request->service_charge,
             'department_id'=>$request->department,
-            'lineman_name_id'=>$request->user,
-            'lineman_user_id_id'=>$request->user_id,
+            'lineman_id'=>$request->user,
+            'lineman_id'=>$request->user_id,
+            'status'=>$request->status,
             'image'=>$filename
 
         ]);

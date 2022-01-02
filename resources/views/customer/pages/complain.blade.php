@@ -15,9 +15,9 @@
            <!--form start-->
 
 <!--temporary success message start-->
-{{--@if(session()->has('msg'))
+@if(session()->has('msg'))
 <p class="alert alert-success">{{session()->get('msg')}}</p>
-@endif--}}
+@endif
 <!--temporary success message end-->
 
 <!--server side validation start-->
@@ -34,7 +34,7 @@
 
 
 <div>
-<form action="{{route('admin.site-info.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('website.complain.store')}}" method="POST">
 @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -42,23 +42,19 @@
 <div class="row">
     <!--column start-->
 <div class="col-md-4">
-<div class="form-group">
-            <label for="exampleFormControlSelect1">Customer ID</label>
-            <select name="customer_id" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach--}}
-            </select>
-</div>
+<div class="mb-3">
+    <label for="" class="">Customer ID</label>
+    <input name="customer_id" placeholder='Enter your ID' type="string" class="form-control" id="" required>
+  </div>
                 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;
 <div class="col-md-4">
 <div class="form-group">
-            <label for="exampleFormControlSelect1">Customer Name</label>
-            <select name="customer_name" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach--}}
+            <label for="exampleFormControlSelect1">Forward To</label>
+            <select name="resolver_id" class="form-control" id="exampleFormControlSelect1">
+                @foreach ($users as $user)
+                    <option value="{{$user->id}}">{{$user->user_id}}</option>
+                    @endforeach
             </select>
 </div>
 </div>
@@ -70,16 +66,7 @@
 <!--row start-->
 <div class="row">
     <!--column start-->
-<div class="col-md-4">
-<div class="form-group">
-            <label for="exampleFormControlSelect1">Forward To</label>
-            <select name="technician_id" class="form-control" id="exampleFormControlSelect1">
-                {{--@foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach--}}
-            </select>
-</div>
-</div>
+
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-12">
 <div class="mb-3">

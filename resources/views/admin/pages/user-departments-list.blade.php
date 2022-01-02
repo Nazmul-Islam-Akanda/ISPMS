@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<h1>User Departments List</h1>
+<h1>Employee Departments List</h1>
 </div>
 
 <div class="container-fluid">
