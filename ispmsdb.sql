@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2021 at 02:53 PM
+-- Generation Time: Jan 07, 2022 at 04:01 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `ispmsdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assets`
+--
+
+CREATE TABLE `assets` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `asset_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `assets`
+--
+
+INSERT INTO `assets` (`id`, `category_id`, `asset_name`, `quantity`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, '3', 'AC-Net F-90X Optical Fiber Splicer Machine', 2, '2', 'Active', '2021-12-31 04:04:37', '2021-12-31 04:04:37');
 
 -- --------------------------------------------------------
 
@@ -69,6 +93,29 @@ INSERT INTO `blocks` (`id`, `name`, `info`, `user_id`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `complains`
+--
+
+CREATE TABLE `complains` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `resolver_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `complain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Hold',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `complains`
+--
+
+INSERT INTO `complains` (`id`, `customer_id`, `resolver_id`, `complain`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'nazmul@gmail.com', '2', 'Network Slow', 'Hold', '2022-01-01 06:39:31', '2022-01-01 06:39:31');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
@@ -100,7 +147,7 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`id`, `block_id`, `customer_name`, `address`, `contact_no`, `email`, `customer_id`, `date`, `customer_type`, `bill_type`, `package_id`, `charge`, `service_charge`, `department_id`, `lineman_id`, `status`, `image`, `created_at`, `updated_at`) VALUES
 (1, '1', 'Nazmul', 'House-4,Road-12/B,Sector-10', 1683674237, 'nazmul@gmail.com', 'nazmul@gmail.com', '2021-12-30', 'Home', 'Prepaid', '1', NULL, '1000', '1', '2', 'Active', '20211230091206.jpg', '2021-12-30 03:06:06', '2021-12-30 03:06:06'),
-(2, '2', 'nz', 'House-4,Road-13/B,Sector-11', 1725893585, 'nz@gmail.com', 'nz@gmail.com', '2021-12-30', 'Office', 'Post paid', '2', NULL, NULL, NULL, '1', 'Deactive', '20211230091245.jpg', '2021-12-30 03:07:45', '2021-12-30 03:07:45');
+(5, '2', 'Nazmul Naeem', 'House-4, Road-13/B, Sector-11', 1725893585, 'nazmulnaeem@gmail.com', 'nazmulnaeem@gmail.com', '2022-01-05', 'Office', 'Post paid', '2', NULL, NULL, '22', '16', 'Active', '20220105010120.jpg', '2022-01-05 07:51:20', '2022-01-05 07:51:20');
 
 -- --------------------------------------------------------
 
@@ -125,7 +172,7 @@ CREATE TABLE `customers_i_p_m_a_c_s` (
 
 INSERT INTO `customers_i_p_m_a_c_s` (`id`, `customer_name_id`, `customer_id_id`, `connection_type`, `ip`, `mac`, `created_at`, `updated_at`) VALUES
 (1, '1', '1', 'Dedicated', '127.16.1.0', NULL, '2021-12-15 12:37:40', '2021-12-15 12:37:40'),
-(2, '2', '2', 'Shared', '127.16.1.0', '128.24.0.1', '2021-12-15 14:01:04', '2021-12-15 14:01:04');
+(4, '5', '5', 'Shared', '127.16.1.1', '128.24.0.1', '2022-01-05 07:59:54', '2022-01-05 07:59:54');
 
 -- --------------------------------------------------------
 
@@ -146,7 +193,34 @@ CREATE TABLE `departments` (
 
 INSERT INTO `departments` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Technical', '2021-11-27 09:39:52', '2021-11-27 09:39:52'),
-(2, 'Account', '2021-11-27 09:39:56', '2021-11-27 09:39:56');
+(2, 'Account', '2021-11-27 09:39:56', '2021-11-27 09:39:56'),
+(22, 'Admin', '2022-01-05 05:06:40', '2022-01-05 05:06:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees_salaries`
+--
+
+CREATE TABLE `employees_salaries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `employee_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `paid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `advance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bonus` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employees_salaries`
+--
+
+INSERT INTO `employees_salaries` (`id`, `employee_id`, `date`, `paid`, `advance`, `bonus`, `status`, `created_at`, `updated_at`) VALUES
+(1, '3', '2021-12-31', '10000', NULL, NULL, 'Active', '2021-12-31 07:53:20', '2021-12-31 07:53:20'),
+(2, '2', '2021-12-31', '150000', NULL, NULL, 'Active', '2021-12-31 07:53:29', '2021-12-31 07:53:29');
 
 -- --------------------------------------------------------
 
@@ -193,7 +267,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2021_12_15_172220_create_customers_i_p_m_a_c_s_table', 8),
 (32, '2014_10_12_000000_create_users_table', 9),
 (41, '2021_12_12_175406_create_customers_table', 10),
-(42, '2021_12_30_093833_create_payments_table', 11);
+(45, '2021_12_30_093833_create_payments_table', 11),
+(47, '2021_12_31_093414_create_assets_table', 12),
+(49, '2021_12_31_133716_create_employees_salaries_table', 13),
+(56, '2022_01_01_120215_create_complains_table', 14);
 
 -- --------------------------------------------------------
 
@@ -258,15 +335,19 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `payments` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `customer_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_id_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `due` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `advance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payment` int(11) NOT NULL,
   `month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `collector_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `collector_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile_banking_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `txnid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -275,8 +356,9 @@ CREATE TABLE `payments` (
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`id`, `customer_id`, `due`, `advance`, `payment`, `month`, `year`, `collector_id`, `discount`, `reason`, `created_at`, `updated_at`) VALUES
-(1, '1', NULL, NULL, 500, 'December', '2021', '1', NULL, NULL, '2021-12-30 03:57:06', '2021-12-30 03:57:06');
+INSERT INTO `payments` (`id`, `customer_name_id`, `customer_id_id`, `due`, `advance`, `payment`, `month`, `year`, `collector_id`, `discount`, `reason`, `mobile_banking_id`, `number`, `txnid`, `created_at`, `updated_at`) VALUES
+(1, '1', '1', NULL, NULL, 400, 'December', '2021', '1', '100', '1st service', NULL, NULL, NULL, '2021-12-30 09:17:10', '2021-12-30 09:17:10'),
+(2, 'nz', 'nz@gmail.com', NULL, NULL, 800, 'January', '2021', NULL, NULL, NULL, '2', '01683674237', '124567', '2021-12-30 09:17:50', '2021-12-30 09:17:50');
 
 -- --------------------------------------------------------
 
@@ -350,13 +432,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `contact_no`, `email`, `email_varified_at`, `user_id`, `password`, `department_id`, `role`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 1683674237, 'admin@gmail.com', NULL, 'admin@gmail.com', '$2y$10$e8FOhQZXpb1kH6w1NI5zjO/9sOIuWzKmkd0UBnGoAinYnUKgoqgLG', NULL, 'Admin', '', NULL, '2021-12-27 13:23:11', '2021-12-27 13:23:11'),
 (2, 'Nazmul Islam Akanda', 1725869365, '18103192nazmul@gmail.com', NULL, '18103192nazmul@gmail.com', '$2y$10$cDxA0w0sR96xBSH3GdbJ8.gknU9Xn6wDDRyC6c99IcNMVpJ09ypyC', '1', 'Technician', '20211227071258.jpg', NULL, '2021-12-27 13:23:58', '2021-12-27 13:23:58'),
-(3, 'Nazmul Islam', 1683594525, 'nazmulislam@gmail.com', NULL, 'nazmulislam@gmail.com', '$2y$10$AiUyqGHRu6pJoWVfs1eLsOV8zb5/B2dDl2Ue/NwzYiD/.Yqpofnem', '2', 'Accountant', '20211227071244.jpg', NULL, '2021-12-27 13:24:44', '2021-12-27 13:24:44');
+(3, 'Nazmul Islam', 1683594525, 'nazmulislam@gmail.com', NULL, 'nazmulislam@gmail.com', '$2y$10$AiUyqGHRu6pJoWVfs1eLsOV8zb5/B2dDl2Ue/NwzYiD/.Yqpofnem', '2', 'Accountant', '20211227071244.jpg', NULL, '2021-12-27 13:24:44', '2021-12-27 13:24:44'),
+(4, 'Nazmul', 1683674237, 'nazmul@gmail.com', NULL, 'nazmul@gmail.com', '$2y$10$c0nMsqVL3iG/hlnEgEDhkuZ4qDvuMv5WEjTZ8gZMrWd5odU5nr7F.', NULL, 'Customer', '20220102090107.jpg', NULL, '2022-01-02 03:21:07', '2022-01-05 06:43:03'),
+(16, 'Admin', 1683674237, 'admin@gmail.com', NULL, 'admin@gmail.com', '$2y$10$ifWDTJkI3OJ3p0X7x8LYdeQ4AQqCTZQgMuDrw.SB.TQ2gQlSEv2ZG', '22', 'Admin', '20220105010100.jpg', NULL, '2022-01-05 07:46:33', '2022-01-05 07:47:01');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `assets`
+--
+ALTER TABLE `assets`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `assets_categories`
@@ -368,6 +457,12 @@ ALTER TABLE `assets_categories`
 -- Indexes for table `blocks`
 --
 ALTER TABLE `blocks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `complains`
+--
+ALTER TABLE `complains`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -386,6 +481,12 @@ ALTER TABLE `customers_i_p_m_a_c_s`
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employees_salaries`
+--
+ALTER TABLE `employees_salaries`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -451,6 +552,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `assets`
+--
+ALTER TABLE `assets`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `assets_categories`
 --
 ALTER TABLE `assets_categories`
@@ -463,22 +570,34 @@ ALTER TABLE `blocks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `complains`
+--
+ALTER TABLE `complains`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `customers_i_p_m_a_c_s`
 --
 ALTER TABLE `customers_i_p_m_a_c_s`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `employees_salaries`
+--
+ALTER TABLE `employees_salaries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -490,7 +609,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `mobile_bankings`
@@ -508,7 +627,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -526,7 +645,7 @@ ALTER TABLE `site_infos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

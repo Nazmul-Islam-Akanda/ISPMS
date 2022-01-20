@@ -43,6 +43,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','Admin']],function(){
     Route::get('/customers-list',[CustomersController::class,'customersList']);
     Route::get('/add/customers',[CustomersController::class,'add']);
     Route::post('/customers/store',[CustomersController::class,'store']);
+    Route::get('/customers/details/{customer_id}',[CustomersController::class,'details']);
+    Route::get('/customers/edit/{customer_id}',[CustomersController::class,'edit']);
+    Route::put('/customers/update/{customer_id}',[CustomersController::class,'update']);
+    Route::get('/customers/delete/{customer_id}',[CustomersController::class,'delete']);
+
 
     //Customers IP-MAC Addresses
     Route::get('/customers-IP-MAC-address-list',[Customers_IP_MAC_Controller::class,'ipMAClist'])->name('admin.customers-IP-MAC.list');
@@ -81,6 +86,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','Admin']],function(){
     route::get('/users-list',[UsersController::class,'usersList'])->name('admin.users.list');
     route::get('/add/users',[UsersController::class,'add'])->name('admin.users.add');
     route::post('/users/store',[UsersController::class,'store'])->name('admin.users.store');
+    Route::get('/users/edit/{user_id}',[UsersController::class,'edit'])->name('admin.users.edit');
+    Route::put('/users/update/{user_id}',[UsersController::class,'update'])->name('admin.users.update');
+    Route::get('/users/delete/{user_id}',[UsersController::class,'delete'])->name('admin.users.delete');
+    //Users Profile
+    Route::get('/user/profile/{user_id}',[UsersController::class,'profile'])->name('admin.user.profile');
+    Route::put('/user/profile/update/{user_id}',[UsersController::class,'profileUpdate'])->name('admin.user.profile-update');
 
     //Mobile Banking
     route::get('/mobile-banking-list',[MobileBankingController::class,'mobileBankingList'])->name('admin.mobile-banking.list');

@@ -12,6 +12,6 @@ class CustomersIPMAC extends Model
     protected $guarded=[];
 
     public function customer(){
-        return $this->belongsTo(Customers::class, 'id');
+        return $this->belongsTo(Customers::class, 'customer_id_id');
     }
 }

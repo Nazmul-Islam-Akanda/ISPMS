@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->integer('contact_no');
             $table->string('email');
-            $table->string('customer_id');
+            $table->string('customer_id')->unique();
             $table->date('date');
             $table->string('customer_type');
             $table->string('bill_type');

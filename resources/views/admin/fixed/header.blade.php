@@ -14,9 +14,6 @@
 
 
 
-
-    
-
         <!-- Header Dropdown -->
         <div class="dropdown ml-auto">
           <a id="messagesInvoker" class="header-invoker" href="#" aria-controls="messages" aria-haspopup="true" aria-expanded="false"
@@ -229,10 +226,11 @@
 
           <ul id="profileMenu" class="unfold unfold-user unfold-light unfold-top unfold-centered position-absolute pt-2 pb-1 mt-4" aria-labelledby="profileMenuInvoker">
             <li class="unfold-item">
-              <a class="unfold-link d-flex align-items-center text-nowrap" href="#">
+              <a class="unfold-link d-flex align-items-center text-nowrap" href="{{route('admin.user.profile',auth()->user()->id)}}" >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 3.993A1 1 0 0 1 2.992 3h18.016c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993zM6 15v2h12v-2H6zm0-8v6h6V7H6zm8 0v2h4V7h-4zm0 4v2h4v-2h-4zM8 9h2v2H8V9z" fill="rgba(98,50,50,1)"/></svg>
                  My Profile
               </a>
+              
             </li>
             
             <li class="unfold-item unfold-item-has-divider">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,7 +10,8 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.pages.dashboards');
+        $users=User::all();
+        return view('admin.pages.dashboards',compact('users'));
     }
 
 }

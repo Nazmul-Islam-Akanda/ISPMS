@@ -37,7 +37,6 @@
 
 
 <main class="main">
-  <!-- Sidebar Nav -->
 
 @include('admin.fixed.sidebar')
 
