@@ -28,4 +28,30 @@ class MobileBankingController extends Controller
         ]);
         return redirect()->back()->with('msg','Mobile Banking added successfully.');
     }
+
+    public function edit($id)
+    {
+        $mobile_banking=MobileBanking::find($id);
+        return view('admin.pages.edit-mobile-banking',compact('mobile_banking'));
+    }
+
+    public function update(Request $request,$id)
+    {
+
+        $mobile_banking=MobileBanking::find($id);
+
+        $mobile_banking->update([
+
+            'name'=>$request->name
+
+        ]);
+        return redirect()->back()->with('msg','Mobile Banking updated successfully.');
+
+    }
+
+    public function delete($id)
+    {
+        MobileBanking::find($id)->delete();
+        return redirect()->back()->with('msg','Mobile Banking deleted.');
+    }
 }

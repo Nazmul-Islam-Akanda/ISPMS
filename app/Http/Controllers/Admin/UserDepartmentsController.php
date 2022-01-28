@@ -30,5 +30,31 @@ class UserDepartmentsController extends Controller
         return redirect()->back()->with('msg','User Department added successfully.');
     }
 
+    public function edit($department_id)
+    {
+        $department=Departments::find($department_id);
+        return view('admin.pages.edit-user-departments',compact('department'));
+    }
+
+    public function update(Request $request,$department_id)
+    {
+
+        $department=Departments::find($department_id);
+
+        $department->update([
+
+            'name'=>$request->name
+
+        ]);
+        return redirect()->back()->with('msg','User Department updated successfully.');
+
+    }
+
+    public function delete($department_id)
+    {
+        Departments::find($department_id)->delete();
+        return redirect()->back()->with('msg','User Department deleted.');
+    }
+
 
 }

@@ -4,7 +4,7 @@
 <div class="container">
 
  <div id="divToPrint">
- <h1>Customers Details</h1>
+ <h1>Customer Details</h1>
 
     <p><img src="{{url('/uploads/'.$customer->image)}}" width="100px" alt="Customer photo"> </p>
       <p> <b>Block:</b>  {{$customer->block->name}}</p>

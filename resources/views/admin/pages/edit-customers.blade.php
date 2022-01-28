@@ -31,7 +31,7 @@
 <a href="{{url('admin/customers-list')}}" class="btn" style="background-color:lightgray; border-radius:10px">Back</a>
 
 <div>
-<form action="{{url('admin/customers/update',$customer->id)}}" method='post' enctype="multipart/form-data">
+<form action="{{route('admin.customers-IP-MAC.update',$customer->id)}}" method='post' enctype="multipart/form-data">
 @method('put')
     @csrf
 <!--fluid-container start-->
@@ -247,7 +247,7 @@
 </div>
 <!--row end-->
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </div>
 <!--fluid-container end-->

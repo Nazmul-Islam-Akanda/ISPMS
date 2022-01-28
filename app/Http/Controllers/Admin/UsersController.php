@@ -67,7 +67,7 @@ class UsersController extends Controller
             'image'=>$filename
 
         ]);
-        return redirect()->back()->with('msg','User added successfully');
+        return redirect()->back()->with('msg','User added successfully.');
 
     }
 
@@ -116,7 +116,7 @@ class UsersController extends Controller
             'image'=>$filename
 
         ]);
-        return redirect()->back()->with('msg','User Information Updated successfully');
+        return redirect()->back()->with('msg','User Information Updated successfully.');
 
     }
 
@@ -169,7 +169,7 @@ class UsersController extends Controller
             'image'=>$filename
 
         ]);
-        return redirect()->back()->with('msg','Profile Information Updated successfully');
+        return redirect()->back()->with('msg','Profile Information Updated successfully.');
 
     }
 

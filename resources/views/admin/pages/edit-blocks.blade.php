@@ -3,7 +3,7 @@
 @section('content')
 <!--container start-->
 <div class="container">
-<h1>Add Blocks</h1>
+<h1>Edit Blocks</h1>
 
 <!--temporary success message start-->
 @if(session()->has('msg'))
@@ -27,7 +27,8 @@
 <a href="{{route('admin.blocks.list')}}" class="btn" style="background-color:lightgray; border-radius:10px">Back</a>
 
 <div>
-<form action="{{route('admin.blocks.store')}}" method="POST">
+<form action="{{route('admin.blocks.update',$block->id)}}" method="POST">
+  @method('put')
 @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -37,7 +38,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Block Name</label>
-    <input name="name" placeholder='Enter Block Name' type="string" class="form-control" id="" required>
+    <input name="name" value="{{$block->name}}" placeholder='Enter Block Name' type="string" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
@@ -45,9 +46,13 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Assign User</label>
             <select name="user" class="form-control" id="exampleFormControlSelect1">
-               @foreach ($users as $user)
-                    <option value="{{$user->id}}"> {{$user->user_id}} </option>
-                @endforeach
+            @foreach ($users as $user)
+                    <option
+                    @if($user->id==$block->user_id)
+                    selected
+                    @endif
+                    value="{{$user->id}}"> {{$user->user_id}} </option>
+                    @endforeach
             </select>
     </div>
 </div>
@@ -61,9 +66,9 @@
 <div class="col-md-7">
 <div class="mb-3">
     <label for="" class="form-label">Additional Information</label>
-    <input name="info" placeholder='Enter Aditional Information Here' type="string" class="form-control" id="">
+    <input name="info" value="{{$block->info}}" placeholder='Enter Aditional Information Here' type="string" class="form-control" id="">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
   </div>
 <!--column end-->
 </div>

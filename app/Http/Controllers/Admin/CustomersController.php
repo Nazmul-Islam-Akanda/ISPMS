@@ -17,7 +17,7 @@ class CustomersController extends Controller
         if(request()->search){
             $key=request()->search;
             $customers=Customers::with('block','package','department','user')
-            ->whereLike(['block.name','package.name','department.name','user.name','user.user_id','customer_name','customer_id','customer_type','bill_type'],$key)
+            ->whereLike(['block.name','package.name','department.name','user.name','user.user_id','customer_name','customer_id','customer_type','bill_type','status'],$key)
             ->get();
             return view('admin.pages.customers-list',compact('customers','key'));
         }
@@ -76,7 +76,7 @@ class CustomersController extends Controller
             'image'=>$filename
 
         ]);
-        return redirect()->back()->with('msg','Customer added successfully');
+        return redirect()->back()->with('msg','Customer added successfully.');
 
 
     }
@@ -140,7 +140,7 @@ class CustomersController extends Controller
             'image'=>$filename
 
         ]);
-        return redirect()->back()->with('msg','Customer Information Updated successfully');
+        return redirect()->back()->with('msg','Customer Information Updated successfully.');
 
     }
 

@@ -31,7 +31,8 @@ class CustomersPanelController extends Controller
     public function payment()
     {
         $mobile_bankings=MobileBanking::all();
-        return view('customer.pages.payment',compact('mobile_bankings'));
+        $customers=User::where('id',auth()->user()->id)->get();
+        return view('customer.pages.payment',compact('mobile_bankings','customers'));
     }
 
     public function paymentStore(Request $request)

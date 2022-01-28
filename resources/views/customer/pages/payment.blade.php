@@ -75,7 +75,7 @@
 &nbsp;&nbsp;&nbsp;  &nbsp;
 <div class="col-md-4">
 <div class="mb-3">
-    <label for="" class="">Phone Number</label>
+    <label for="" class="">Pay By Number</label>
     <input name="number" placeholder='Payment from' type="number" class="form-control" id="" required>
   </div>
 </div>

@@ -3,7 +3,7 @@
 @section('content')
 <!--container start-->
 <div class="container">
-<h1>Add Employees Salary Information</h1>
+<h1>Edit Employees Salary Information</h1>
 
 <!--temporary success message start-->
 @if(session()->has('msg'))
@@ -19,7 +19,8 @@
 <a href="{{route('admin.empolyees-salary.list')}}" class="btn" style="background-color:lightgray; border-radius:10px">Back</a>
 
 <div>
-<form action="{{route('admin.employees-salary.store')}}" method='post' >
+<form action="{{route('admin.employees-salary.update',$employeeSalary->id)}}" method='post' >
+@method('put')
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -30,8 +31,12 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Employee ID</label>
             <select name="employee_id" class="form-control" id="exampleFormControlSelect1" >
-                @foreach ($users as $user)
-                    <option value="{{$user->id}}">{{$user->user_id}}</option>
+            @foreach ($users as $user)
+                    <option
+                    @if($user->id==$employeeSalary->employee_id)
+                    selected
+                    @endif
+                    value="{{$user->id}}"> {{$user->user_id}} </option>
                     @endforeach
             </select>
     </div>
@@ -40,14 +45,14 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Date</label>
-    <input name="date" placeholder='Date' type="date" class="form-control" id="" required>
+    <input name="date" value="{{$employeeSalary->date}}" placeholder='Date' type="date" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Paid Amount</label>
-    <input name="paid" placeholder='Enter Paid amount' type="number" class="form-control" id="" required>
+    <input name="paid" value="{{$employeeSalary->paid}}" placeholder='Enter Paid amount' type="number" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -60,14 +65,14 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Advance</label>
-    <input name="advance" placeholder='Month-Month' type="string" class="form-control" id="">
+    <input name="advance" value="{{$employeeSalary->advance}}" placeholder='Month-Month' type="string" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Bonus</label>
-    <input name="bonus" placeholder='Enter bonus amount' type="number" class="form-control" id="">
+    <input name="bonus" value="{{$employeeSalary->bonus}}" placeholder='Enter bonus amount' type="number" class="form-control" id="">
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
@@ -75,8 +80,8 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Status</label>
             <select name="status" class="form-control" id="exampleFormControlSelect1">
-                    <option>Active</option>
-                    <option>Leave</option>
+            <option {{ ($employeeSalary->status) == 'Active' ? 'selected' : '' }}  value="Active">Active</option>
+            <option {{ ($employeeSalary->status) == 'Leave' ? 'selected' : '' }}  value="Leave">Leave</option>
             </select>
     </div>
 </div>
@@ -85,7 +90,7 @@
 <!--row end-->
 
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </div>
 <!--fluid-container end-->

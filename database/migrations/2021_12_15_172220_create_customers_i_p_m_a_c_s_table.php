@@ -20,6 +20,7 @@ class CreateCustomersIPMACSTable extends Migration
             $table->string('connection_type');
             $table->string('ip');
             $table->string('mac')->nullable();
+            $table->string('approval')->default('Unapproved');
             $table->timestamps();
         });
     }
