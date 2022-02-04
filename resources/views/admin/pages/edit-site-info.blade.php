@@ -3,13 +3,14 @@
 @section('content')
 <!--container start-->
 <div class="container">
-<h1>Add Site Information</h1>
+<h1>Edit Site Information</h1>
 
 <!--temporary success message start-->
 @if(session()->has('msg'))
 <p class="alert alert-success">{{session()->get('msg')}}</p>
 @endif
 <!--temporary success message end-->
+
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -18,7 +19,8 @@
 <a href="{{route('admin.site.info')}}" class="btn" style="background-color:lightgray; border-radius:10px">Back</a>
 
 <div>
-<form action="{{route('admin.site-info.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.site-info.update',$site_info->id)}}" method="POST" enctype="multipart/form-data">
+@method('put')
 @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -28,14 +30,14 @@
 <div class="col-md-4">
 <div class="mb-3">
     <label for="" class="form-label">Company Name</label>
-    <input name="name" placeholder='Enter Company Name' type="string" class="form-control" id="" required>
+    <input name="name" value="{{$site_info->company_name}}" placeholder='Enter Company Name' type="string" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-4">
 <div class="mb-3">
     <label for="" class="form-label">Contact Information</label>
-    <input name="contact_info" placeholder='Enter contact information' type="string" class="form-control" id="" required>
+    <input name="contact_info" value="{{$site_info->contact_info}}" placeholder='Enter contact information' type="string" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -49,14 +51,14 @@
 <div class="col-md-4">
 <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Company Email</label>
-    <input name="email" placeholder='Enter company email' type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    <input name="email" value="{{$site_info->company_email}}" placeholder='Enter company email' type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-4">
 <div class="mb-3">
     <label for="" class="form-label">Company Address</label>
-    <input name="address" placeholder='Enter company address' type="string" class="form-control" id="" required>
+    <input name="address" value="{{$site_info->company_address}}" placeholder='Enter company address' type="string" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -70,14 +72,14 @@
     <div class="col-md-4">
 <div class="mb-3">
     <label for="" class="form-label">Business Area</label>
-    <input name="business_area" placeholder='Enter area of business' type="string" class="form-control" id="" required>
+    <input name="business_area" value="{{$site_info->business_area}}" placeholder='Enter area of business' type="string" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-4">
     <div class="mb-3">
         <label for="" class="form-label">Mobile Banking Information</label>
-        <input name="mobile_banking_info" placeholder='Enter information for mobile banking' type="string" class="form-control" id="">
+        <input name="mobile_banking_info" value="{{$site_info->mobile_banking_info}}" placeholder='Enter information for mobile banking' type="string" class="form-control" id="">
       </div>
 </div>
 <!--column end-->
@@ -91,7 +93,7 @@
     <div class="col-md-4">
     <div class="mb-3">
         <label for="" class="form-label">Opening Hours</label>
-        <input name="opening_hours" placeholder='Enter when company opens' type="string" class="form-control" id="">
+        <input name="opening_hours" value="{{$site_info->opening_hours}}" placeholder='Enter when company opens' type="string" class="form-control" id="">
       </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
@@ -105,7 +107,7 @@
 </div>
 <!--row end-->
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 
 </div>

@@ -10,16 +10,34 @@ class ComplainsController extends Controller
 {
     public function complainsList()
     {
-        $key=null;
+        if(auth()->user()->user_id=='admin@gmail.com')
+        {
+            $key=null;
         if(request()->search){
             $key=request()->search;
             $complains = Complains::with('user')
-            ->whereLike(['user.name','user.user_id','customer_id','complain'],$key)
+            ->whereLike(['user.name','user.user_id','customer_id','complain','status'],$key)
             ->get();
             return view('admin.pages.complains-list',compact('complains','key'));
         }
         $complains = Complains::with('user')->get();
         return view('admin.pages.complains-list',compact('complains','key'));
+        }
+
+        if(auth()->user()->user_id!='admin@gmail.com')
+        {
+            $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $complains = Complains::with('user')->where('resolver_id',auth()->user()->id)
+            ->whereLike(['user.name','user.user_id','customer_id','complain','status'],$key)
+            ->get();
+            return view('admin.pages.complains-list',compact('complains','key'));
+        }
+        $complains = Complains::with('user')->where('resolver_id',auth()->user()->id)->get();
+        return view('admin.pages.complains-list',compact('complains','key'));
+        }
+        
     }
 
     public function complainsStatus($id)

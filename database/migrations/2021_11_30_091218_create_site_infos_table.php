@@ -22,7 +22,7 @@ class CreateSiteInfosTable extends Migration
             $table->string('business_area');
             $table->string('mobile_banking_info');
             $table->string('opening_hours');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }

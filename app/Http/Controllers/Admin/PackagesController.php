@@ -10,8 +10,17 @@ class PackagesController extends Controller
 {
     
     Public function packagesList(){
-        $packages=Packages::all();
-        return view('admin.pages.packages-list',compact('packages'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $packages=Packages::orderBy('price', 'ASC')
+            ->whereLike(['name','price'],$key)
+            ->get();
+            return view('admin.pages.packages-list',compact('packages','key'));
+        }
+        $packages=Packages::orderBy('price', 'ASC')->get();
+        return view('admin.pages.packages-list',compact('packages','key'));
     }
 
     public function add(){
@@ -26,5 +35,32 @@ class PackagesController extends Controller
             'price'=>$request->price
         ]);
         return redirect()->back()->with('msg','Package added successfully.');
+    }
+
+    public function edit($id)
+    {
+        $package=Packages::find($id);
+        return view('admin.pages.edit-packages',compact('package'));
+    }
+
+    public function update(Request $request,$id)
+    {
+
+        $package=Packages::find($id);
+
+        $package->update([
+
+            'name'=>$request->name,
+            'price'=>$request->price
+
+        ]);
+        return redirect()->back()->with('msg','Package updated successfully.');
+
+    }
+
+    public function delete($id)
+    {
+        Packages::find($id)->delete();
+        return redirect()->back()->with('msg','Package deleted.');
     }
 }

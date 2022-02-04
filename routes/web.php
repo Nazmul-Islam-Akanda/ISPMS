@@ -139,12 +139,18 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','Admin']],function(){
     //Packages
     route::get('/packages-list',[PackagesController::class,'packagesList'])->name('admin.packages.list');
     route::get('/add/packages',[PackagesController::class,'add'])->name('admin.packages.add');
-    route::post('packages/store',[PackagesController::class,'store'])->name('admin.packages.store');
+    route::post('/packages/store',[PackagesController::class,'store'])->name('admin.packages.store');
+    route::get('/packages/edit/{package_id}',[PackagesController::class,'edit'])->name('admin.packages.edit');
+    Route::put('/packages/update/{package_id}',[PackagesController::class,'update'])->name('admin.packages.update');
+    Route::get('/packages/delete/{package_id}',[PackagesController::class,'delete'])->name('admin.packages.delete');
 
     //site-info
     route::get('/site-info',[SiteInfoController::class,'siteInfo'])->name('admin.site.info');
     route::get('/add/site-info',[SiteInfoController::class,'add'])->name('admin.site-info.add');
     route::post('/site-info/store',[SiteInfoController::class,'store'])->name('admin.site-info.store');
+    route::get('/site-info/edit/{site_info_id}',[SiteInfoController::class,'edit'])->name('admin.site-info.edit');
+    Route::put('/site-info/update/{site_info_id}',[SiteInfoController::class,'update'])->name('admin.site-info.update');
+    Route::get('/site-info/delete/{site_info_id}',[SiteInfoController::class,'delete'])->name('admin.site-info.delete');
 
 });
 

@@ -11,17 +11,6 @@
 @endif
 <!--temporary success message end-->
 
-<!--server side validation start-->
-{{--@if ($errors->any())
-     <div class="alert alert-danger" role="alert">
-       <ul>
-         @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-         @endforeach
-       </ul>
-     </div>
-@endif--}}
-<!--server side validation end-->
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

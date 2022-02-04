@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2022 at 06:51 PM
+-- Generation Time: Feb 04, 2022 at 12:57 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -111,7 +111,8 @@ CREATE TABLE `complains` (
 --
 
 INSERT INTO `complains` (`id`, `customer_id`, `resolver_id`, `complain`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'nazmul@gmail.com', '2', 'Network Slow', 'Completed', '2022-01-01 06:39:31', '2022-01-23 09:38:32');
+(1, 'nazmul@gmail.com', '2', 'Network Slow', 'Completed', '2022-01-01 06:39:31', '2022-01-23 09:38:32'),
+(3, 'nazmul@gmail.com', '16', 'connection disconnected', 'Completed', '2022-02-04 05:50:20', '2022-02-04 05:51:59');
 
 -- --------------------------------------------------------
 
@@ -263,7 +264,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2021_11_27_121058_create_blocks_table', 1),
 (7, '2021_11_27_181343_create_packages_table', 2),
 (10, '2021_12_03_112116_create_mobile_bankings_table', 4),
-(12, '2021_11_30_091218_create_site_infos_table', 5),
 (13, '2021_12_04_083113_create_assets_categories_table', 6),
 (32, '2014_10_12_000000_create_users_table', 9),
 (41, '2021_12_12_175406_create_customers_table', 10),
@@ -271,7 +271,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (47, '2021_12_31_093414_create_assets_table', 12),
 (49, '2021_12_31_133716_create_employees_salaries_table', 13),
 (56, '2022_01_01_120215_create_complains_table', 14),
-(57, '2021_12_15_172220_create_customers_i_p_m_a_c_s_table', 15);
+(57, '2021_12_15_172220_create_customers_i_p_m_a_c_s_table', 15),
+(58, '2021_11_30_091218_create_site_infos_table', 16);
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,8 @@ CREATE TABLE `packages` (
 
 INSERT INTO `packages` (`id`, `name`, `price`, `created_at`, `updated_at`) VALUES
 (1, '3mb', 500, '2021-11-27 12:17:47', '2021-11-27 12:17:47'),
-(2, '10mb', 800, '2021-11-27 12:20:38', '2021-11-27 12:20:38');
+(2, '10mb', 800, '2021-11-27 12:20:38', '2021-11-27 12:20:38'),
+(3, '5mb', 600, '2022-02-04 05:02:52', '2022-02-04 05:02:52');
 
 -- --------------------------------------------------------
 
@@ -394,7 +396,7 @@ CREATE TABLE `site_infos` (
   `business_area` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile_banking_info` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `opening_hours` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -404,7 +406,7 @@ CREATE TABLE `site_infos` (
 --
 
 INSERT INTO `site_infos` (`id`, `company_name`, `contact_info`, `company_email`, `company_address`, `business_area`, `mobile_banking_info`, `opening_hours`, `logo`, `created_at`, `updated_at`) VALUES
-(4, 'Catch Net Ltd.', 'Gp: 01735674896 Airtel:01689674984', 'CatchNet&U@gmail.com', 'House-4, Road-13/B, Sector-10', 'Uttara, Dhaka-1230', 'bKash Personal: 01683675478', 'Saturday-Thursday: 9:00 AM- 6:00 PM', '20211203021258.jpg', '2021-12-03 08:47:58', '2021-12-03 08:47:58');
+(1, 'Catch Net Ltd.', 'Gp: 01735674896 Airtel:01689674984', 'CatchNet&U@gmail.com', 'House-4, Road-13/B, Sector-10', 'Uttara, Dhaka-1230', 'bKash Personal: 01683675478', 'Saturday-Thursday: 9:00 AM- 6:00 PM', '20220203030246.jpg', '2022-02-03 09:22:46', '2022-02-03 09:22:46');
 
 -- --------------------------------------------------------
 
@@ -574,7 +576,7 @@ ALTER TABLE `blocks`
 -- AUTO_INCREMENT for table `complains`
 --
 ALTER TABLE `complains`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -610,7 +612,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `mobile_bankings`
@@ -622,7 +624,7 @@ ALTER TABLE `mobile_bankings`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -640,7 +642,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `site_infos`
 --
 ALTER TABLE `site_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

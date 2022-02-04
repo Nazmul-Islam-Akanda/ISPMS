@@ -11,21 +11,21 @@ class WebsiteHomeController extends Controller
 {
     public function home()
     {
-        $packages=Packages::all();
+        $packages=Packages::orderBy('price', 'ASC')->get();
         $site_infos = SiteInfo::all();
         return view('website.pages.home',compact('packages','site_infos'));
     }
 
     public function user()//Admin/User Login
     {
-        $packages=Packages::all();
+        $packages=Packages::orderBy('price', 'ASC')->get();
         $site_infos = SiteInfo::all();
         return view('website.pages.user',compact('packages','site_infos'));
     }
 
     public function customer()
     {
-        $packages=Packages::all();
+        $packages=Packages::orderBy('price', 'ASC')->get();
         $site_infos = SiteInfo::all();
         return view('website.pages.customer',compact('packages','site_infos'));
     }
