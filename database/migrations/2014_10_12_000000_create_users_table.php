@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('department_id')->nullable();
             $table->string('role')->nullable();
             $table->string('image');
+            $table->string('reset_token')->nullable();
+            $table->dateTime('reset_token_expire_at')->nullable();
             $table->rememberToken();
             //$table->string('status')->default('active');
             $table->timestamps();

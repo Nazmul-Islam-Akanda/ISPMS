@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="container">
-<h1>Mobile Banking List</h1>
+{{-- <h1> {{__('message.list')}}</h1> --}}
+ <h1>{{__('Mobile Banking List')}}</h1> 
 </div>
+
+<p class="btn btn-primary">{{$msg}}</p>
 
 <div class="container-fluid">
 <div class="row">

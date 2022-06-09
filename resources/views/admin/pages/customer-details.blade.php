@@ -32,9 +32,7 @@
 
 </div>
      
-
-
-      <script language="javascript">
+<script language="javascript">
     function PrintDiv(divName) {
         var printContents = document.getElementById(divName).innerHTML;
         var originalContents = document.body.innerHTML;
@@ -43,4 +41,10 @@
         document.body.innerHTML = originalContents;
     }
 </script>
+ 
 @endsection
+
+
+
+
+

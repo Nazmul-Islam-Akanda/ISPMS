@@ -31,7 +31,7 @@
 
 <div>
 <form action="{{route('admin.users.update',$user->id)}}" method='post' enctype="multipart/form-data">
-  @method('put')
+  @method('PUT')
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">

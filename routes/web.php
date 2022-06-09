@@ -1,6 +1,8 @@
 <?php
 
+use JetBrains\PhpStorm\Language;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AssetsController;
@@ -38,6 +40,12 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','Admin']],function(){
+
+
+    //Localization
+    Route::get('/language/{local}',[LanguageController::class,'changeLanguage'])->name('language');
+
+    //Dashboard
     Route::get('/dashboards',[HomeController::class,'dashboard'])->name('dashboard');
 
     //Customers
@@ -172,7 +180,17 @@ Route::group(['prefix'=>'website'],function(){
     Route::post('/customer/login',[WebsiteCustomerController::class,'customerLogin'])->name('website.customers.login');
     Route::get('/customer/logout',[WebsiteCustomerController::class,'customerLogout'])->name('website.customers.logout');
 
+    //Customer Forget Password
+    Route::get('/customer/forget-password', [WebsiteCustomerController::class, 'forgetPassword'])->name('website.customers.forget.password');
+    Route::post('/customer/forget-password',[WebsiteCustomerController::class,'forgetPasswordEmailPost'])->name('website.customers.forget.password.post');
+    Route::get('/customer/reset-password/{token}',[WebsiteCustomerController::class,'resetPassword'])->name('website.customers.reset.password');
+    Route::post('/customer/reset-password/',[WebsiteCustomerController::class,'resetPasswordPost'])->name('website.customers.reset.password.post');
 });
+//Customer Login With Facebook
+    Route::get('auth/facebook',[WebsiteCustomerController::class,'facebookRedirect'])->name('login.facebook');
+    Route::get('auth/facebook/callback',[WebsiteCustomerController::class,'loginWithFacebook']);
+
+
 
 Route::group(['prefix'=>'customer','middleware'=>['auth','Customer']],function(){
     //Customer complain

@@ -82,10 +82,14 @@
 <div class="col">
 <div class="mb-3">
 <button type="submit" class="btn btn-primary">Log In</button>
+<a href="{{route('login.facebook')}}" class="btn btn-secondary">Login With Facebook</a>
+<a href="{{route('website.customers.forget.password')}}" class="txt3">Forgot Password?</a>
   </div>
 </div>
 
 <div class="col">
+                        
+
 </div>
 <!--column end-->
 </div>

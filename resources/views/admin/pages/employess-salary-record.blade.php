@@ -59,9 +59,9 @@
     @foreach ($employeeSalaries as $key=>$employeeSalary)
     <tr>
       <th> {{$key+1}} </th>
-      <td> {{$employeeSalary->user->name}} </td>
-      <td> {{$employeeSalary->user->user_id}} </td>
-      <td> {{$employeeSalary->user->department->name}} </td>
+      <td> {{$employeeSalary->user->name ?? ""}} </td>
+      <td> {{$employeeSalary->user->user_id ?? ""}} </td>
+      <td> {{$employeeSalary->user->department->name ?? ""}} </td>
       <td> {{$employeeSalary->paid}} </td>
       <td> {{$employeeSalary->advance}} </td>
       <td> {{$employeeSalary->bonus}} </td>

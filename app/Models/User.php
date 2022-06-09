@@ -27,6 +27,9 @@ class User extends Authenticatable
         'department_id',
         'role',
         'image',
+        'facebook_id',
+        'reset_token',
+        'reset_token_expire_at',
     ];
 
     /**

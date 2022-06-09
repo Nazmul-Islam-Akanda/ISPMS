@@ -12,6 +12,16 @@
       <!-- Company Name -->
     </div>
 
+
+    <div class="col-md-4">
+        <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
+            <option value="">Select language</option>
+            <option value="{{route('language','en')}}">EN</option>
+            <option value="{{route('language','bn')}}">BN</option>
+            <option value="{{route('language','ar')}}">AR</option>
+        </select>
+    </div>
+
         <!-- Header User Dropdown -->
         <div class="dropdown mx-3">
           <a id="profileMenuInvoker" class="header-complex-invoker" href="#" aria-controls="profileMenu" aria-haspopup="true" aria-expanded="false"

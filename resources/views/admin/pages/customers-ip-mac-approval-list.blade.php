@@ -58,7 +58,7 @@
       <td> {{$customersIPMAC->connection_type}} </td>
       <td> {{$customersIPMAC->ip}} </td>
       <td> {{$customersIPMAC->mac}} </td>
-      <td><a href="{{route('admin.IP&MAC.approve',$customersIPMAC->id)}}" class="btn btn-danger" style="border-radius:10px; ">active</a></td>
+      <td><a href="{{route('admin.IP&MAC.approve',$customersIPMAC->id)}}" class="btn btn-danger" style="border-radius:10px; ">Approve</a></td>
   <td><a Style=background-color:#0e0561>{{$customersIPMAC->customer->status ?? ""}}</a></td>
 </tr>
 @endforeach
