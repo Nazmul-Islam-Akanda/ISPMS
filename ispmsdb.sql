@@ -296,8 +296,8 @@ DROP TABLE IF EXISTS `jobs`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `attempts` tinyint unsigned NOT NULL,
   `reserved_at` int unsigned DEFAULT NULL,
   `available_at` int unsigned NOT NULL,
@@ -328,7 +328,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +337,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2021_11_16_053620_create_departments_table',1),(6,'2021_11_27_121058_create_blocks_table',1),(7,'2021_11_27_181343_create_packages_table',2),(10,'2021_12_03_112116_create_mobile_bankings_table',4),(13,'2021_12_04_083113_create_assets_categories_table',6),(41,'2021_12_12_175406_create_customers_table',10),(45,'2021_12_30_093833_create_payments_table',11),(47,'2021_12_31_093414_create_assets_table',12),(49,'2021_12_31_133716_create_employees_salaries_table',13),(56,'2022_01_01_120215_create_complains_table',14),(57,'2021_12_15_172220_create_customers_i_p_m_a_c_s_table',15),(58,'2021_11_30_091218_create_site_infos_table',16),(65,'2014_10_12_000000_create_users_table',17),(66,'2022_03_21_153917_add_facebook_id_column_to_users_table',17),(67,'2022_05_17_094207_create_jobs_table',18);
+INSERT INTO `migrations` VALUES (2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2021_11_16_053620_create_departments_table',1),(6,'2021_11_27_121058_create_blocks_table',1),(7,'2021_11_27_181343_create_packages_table',2),(10,'2021_12_03_112116_create_mobile_bankings_table',4),(13,'2021_12_04_083113_create_assets_categories_table',6),(41,'2021_12_12_175406_create_customers_table',10),(45,'2021_12_30_093833_create_payments_table',11),(47,'2021_12_31_093414_create_assets_table',12),(49,'2021_12_31_133716_create_employees_salaries_table',13),(56,'2022_01_01_120215_create_complains_table',14),(57,'2021_12_15_172220_create_customers_i_p_m_a_c_s_table',15),(58,'2021_11_30_091218_create_site_infos_table',16),(65,'2014_10_12_000000_create_users_table',17),(66,'2022_03_21_153917_add_facebook_id_column_to_users_table',17),(67,'2022_05_17_094207_create_jobs_table',18),(68,'2022_06_27_064931_create_orders_table',19),(69,'2022_06_27_065050_create_order_details_table',19);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,6 +365,63 @@ LOCK TABLES `mobile_bankings` WRITE;
 /*!40000 ALTER TABLE `mobile_bankings` DISABLE KEYS */;
 INSERT INTO `mobile_bankings` VALUES (2,'bKash','2021-12-03 05:48:34','2021-12-03 05:48:34'),(3,'Rocket','2021-12-03 05:51:22','2021-12-03 05:51:22');
 /*!40000 ALTER TABLE `mobile_bankings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_details`
+--
+
+DROP TABLE IF EXISTS `order_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_details` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `package_id` int NOT NULL,
+  `unit_price` int NOT NULL,
+  `quantity` int NOT NULL,
+  `sub_total` double(10,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_details`
+--
+
+LOCK TABLES `order_details` WRITE;
+/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+INSERT INTO `order_details` VALUES (1,24,1,500,2,1000.00,'2022-06-27 04:23:32','2022-06-27 04:23:32'),(2,24,3,600,2,1200.00,'2022-06-27 04:23:32','2022-06-27 04:23:32'),(3,24,2,800,1,800.00,'2022-06-27 04:23:33','2022-06-27 04:23:33'),(4,25,1,500,2,1000.00,'2022-06-27 05:06:12','2022-06-27 05:06:12'),(5,25,3,600,2,1200.00,'2022-06-27 05:06:12','2022-06-27 05:06:12');
+/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `total_price` double(10,2) NOT NULL DEFAULT '0.00',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (24,1,3000.00,'2022-06-27 04:23:31','2022-06-27 04:23:31'),(25,1,2200.00,'2022-06-27 05:06:12','2022-06-27 05:06:12');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -569,4 +626,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-17 16:41:25
+-- Dump completed on 2022-06-27 17:17:25

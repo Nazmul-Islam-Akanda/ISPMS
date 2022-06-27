@@ -19,6 +19,10 @@
             <li class="nav-item">
               <a class="nav-link " href="{{route('customer.payments')}}">Mobile Banking Payment</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="{{route('website.home')}}">Package Order</a>
+            </li>
           </ul>
 
           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp

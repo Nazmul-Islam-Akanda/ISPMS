@@ -128,6 +128,8 @@
               <b>Our <em>Packages</em> List</b>
             </h2>
 
+            <h> <a class="nav-link" href="{{route('cart.get')}}" style="color:blueviolet">Cart({{session()->has('cart') ? count(session()->get('cart')) : 0}})</a>  </h>
+
           </div>
         </div>
 
@@ -149,6 +151,7 @@
                     <p style="color:tomato;" class="mb-0">
                       BDT {{$package->price}}
                     </p>
+                    <a href="{{route('cart.add',$package->id)}}" style="color:blueviolet">Add to cart</a>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use JetBrains\PhpStorm\Language;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AssetsController;
 use App\Http\Controllers\Admin\BlocksController;
+use App\Http\Controllers\Website\OrderController;
 use App\Http\Controllers\Admin\PackagesController;
 use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\SiteInfoController;
@@ -169,6 +171,16 @@ Route::group(['prefix'=>'website'],function(){
     route::get('/home',[WebsiteHomeController::class,'home'])->name('website.home');
     route::get('/user-login',[WebsiteHomeController::class,'user'])->name('website.user');//every route of admin panel goes here
     route::get('/customer-login',[WebsiteHomeController::class,'customer'])->name('website.customer');
+
+
+   Route::group(['middleware'=>'web_auth'],function(){
+    Route::get('/add-to-cart/{id}',[OrderController::class,'addToCart'])->name('cart.add');
+    Route::get('/get-cart',[OrderController::class,'getCart'])->name('cart.get');
+    Route::get('/clear-cart',[OrderController::class,'clearCart'])->name('cart.clear');
+    Route::get('/checkout',[OrderController::class,'checkout'])->name('cart.checkout');
+    Route::get('remove/cart/{id}', [OrderController::class, 'removeFromCart'])->name('remove');
+});
+
 
     //User Or Admin Login and logout
     Route::post('/user/login',[WebsiteUserController::class,'userLogin'])->name('website.users.login');

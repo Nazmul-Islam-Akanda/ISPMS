@@ -64,32 +64,38 @@
            @endif
           </div>
         </div>
+        <h1 style="padding-top: 100px;">My Cart ({{session()->has('cart') ? count(session()->get('cart')):0}})</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Package Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Sub Total</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
 
-        <div class="row">
-        @foreach ($packages as $package)
-          <div class="col-2">
-            <!-- Slider -->
-            <div class="flickity-viewport-visible" data-flickity='{"cellAlign": "left", "contain": true, "imagesLoaded": true, "pageDots": false}'>
-              <div class="w-100 px-2" style="max-width: 320px;">
-                  <!-- Body -->
-                  <div class="card-body">
-                    <!-- Heading -->
-                    <div class="row mb-2">
-                      <div class="col">
-                        <h5 style="font-size:50px;" class="mb-0">{{$package->name}}*</h5>
-                      </div>
-                    </div>
-                    <!-- Text -->
-                    <p style="color:tomato;" class="mb-0">
-                      BDT {{$package->price}}
-                    </p>
-                    <a href="{{route('cart.add',$package->id)}}" style="color:blueviolet">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            @endforeach
-          </div>
+        @if($carts)
+        @foreach($carts as $key=>$data)
+        {{--@dd($data)--}}
+        <tr>
+            <th scope="row">{{$key}}</th>
+            <td>{{$data['package_name']}}</td>
+            <td>{{$data['package_price']}}</td>
+            <td>{{$data['package_qty']}}</td>
+            <td>{{$data['package_price'] * $data['package_qty']}}</td>
+            <td><a href="{{route('remove', [$key])}}" class="btn btn-sm btn-danger">X</a></td>
+        </tr>
+        @endforeach
+            @endif
+
+        </tbody>
+    </table>
+    <a href="{{route('cart.checkout')}}" class="btn btn-success">Checkout</a>
+    <a href="{{route('cart.clear')}}" class="btn btn-danger">Clear Cart</a>
 
         </div>
       </div>

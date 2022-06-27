@@ -23,6 +23,12 @@
           <a class="navbar-brand d-none d-lg-flex mx-lg-auto" href="{{route('website.home')}}">
             Home
           </a>
+
+         @if(auth()->user())
+          <a class="navbar-brand d-none d-lg-flex mx-lg-auto" href="{{route('customer.complains')}}">
+            Customer Panel
+          </a>
+          @endif
     
           <!-- Navbar nav -->
           <ul class="navbar-nav">
